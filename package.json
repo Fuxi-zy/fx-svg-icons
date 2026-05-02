@@ -23,7 +23,8 @@
     "./dist/style.css": "./dist/svg-icon.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "README_EN.md"
   ],
   "scripts": {
     "build": "vite build && vue-tsc -p tsconfig.build.json",
