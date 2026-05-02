@@ -17,7 +17,7 @@ hero:
       link: /demos
     - theme: alt
       text: GitHub
-      link: https://github.com/Fuxi-zjx/fx-svg-icons
+      link: https://github.com/Fuxi-zy/fx-svg-icons
 features:
   - icon: 🌐
     title: Iconify 图标集
