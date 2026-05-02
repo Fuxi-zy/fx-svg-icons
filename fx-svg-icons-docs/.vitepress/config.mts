@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress"
 import type { DefaultTheme } from "vitepress"
 import fxConfig from "@fuxishi/vitepress-theme/config"
 import type { FxThemeCustomConfig } from "@fuxishi/vitepress-theme/config"
+import icon from "../public/svg-ts/svg"
 
 type ThemeConfig = DefaultTheme.Config & FxThemeCustomConfig
 
@@ -145,7 +146,13 @@ export default defineConfig<ThemeConfig>({
     logo: "/logo.png",
     siteTitle: "@fuxishi/svg-icon",
     socialLinks: [
-      { icon: "github", link: "https://github.com/Fuxi-zjx/fx-svg-icons" },
+      { icon: "github", link: "https://github.com/Fuxi-zy/fx-svg-icons" },
+      {
+        icon: {
+          svg: icon.csdn,
+        },
+        link: "https://blog.csdn.net/qq_42840755",
+      },
     ],
     confetti: true,
     heroImageColor: true,
