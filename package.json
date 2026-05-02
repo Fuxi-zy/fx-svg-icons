@@ -29,7 +29,11 @@
   "scripts": {
     "build": "vite build && vue-tsc -p tsconfig.build.json",
     "typecheck": "vue-tsc --noEmit",
-    "ncu": "ncu -u && pnpm install"
+    "ncu": "ncu -u && pnpm install",
+    "login": "npm login --registry=https://registry.npmjs.org/",
+    "pub": "npm publish --access public --registry=https://registry.npmjs.org/",
+    "pub-tag": "npm publish --access public --tag alpha --registry=https://registry.npmjs.org/",
+    "deprecate": "node -e \"const v=process.argv[1],m=process.argv[2]||'';require('child_process').execSync('npm deprecate @fuxishi/vitepress-theme@'+v+' \\\"'+m+'\\\" --registry=https://registry.npmjs.org/',{stdio:'inherit'})\""
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0"
@@ -75,6 +79,6 @@
     "svg",
     "element-plus"
   ],
-  "packageManager": "pnpm@10.32.0",
+  "packageManager": "pnpm@10.33.2",
   "license": "MIT"
 }
