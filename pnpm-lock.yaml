@@ -206,8 +206,8 @@ importers:
   fx-svg-icons-docs:
     devDependencies:
       '@fuxishi/vitepress-theme':
-        specifier: 2.0.0-alpha.4
-        version: 2.0.0-alpha.4(typescript@6.0.3)(vitepress@2.0.0-alpha.17(@types/node@24.12.2)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.12)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.33(typescript@6.0.3))
+        specifier: 2.0.0-alpha.5
+        version: 2.0.0-alpha.5(typescript@6.0.3)(vitepress@2.0.0-alpha.17(@types/node@24.12.2)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.12)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.33(typescript@6.0.3))
       vitepress:
         specifier: 2.0.0-alpha.17
         version: 2.0.0-alpha.17(@types/node@24.12.2)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.12)(sortablejs@1.15.7)(typescript@6.0.3)
@@ -470,8 +470,8 @@ packages:
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
 
-  '@fuxishi/vitepress-theme@2.0.0-alpha.4':
-    resolution: {integrity: sha512-H8adG4fcVurm3JiiVBEF35XceI18qB13lCeyj5+PahRwrVf9WMvm88W1YD/kvH3n0FN04eQHhjJpyrxAH19XQg==}
+  '@fuxishi/vitepress-theme@2.0.0-alpha.5':
+    resolution: {integrity: sha512-n/Saaw9WK6cxrcRDClzoFiz9zovK7Nm8D9ElOBUckDxJsKURjmlTO3t4yO/HvF4+GhHfJYWPc/kzY7db6pHE6A==}
     peerDependencies:
       vitepress: '>=2.0.0-alpha.17'
 
@@ -2100,7 +2100,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@fuxishi/vitepress-theme@2.0.0-alpha.4(typescript@6.0.3)(vitepress@2.0.0-alpha.17(@types/node@24.12.2)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.12)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.33(typescript@6.0.3))':
+  '@fuxishi/vitepress-theme@2.0.0-alpha.5(typescript@6.0.3)(vitepress@2.0.0-alpha.17(@types/node@24.12.2)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.12)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.33(typescript@6.0.3))':
     dependencies:
       canvas-confetti: 1.9.4
       element-plus: 2.13.7(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3))
