@@ -139,6 +139,8 @@ export default defineConfig<ThemeConfig>({
     },
   },
 
+  appearance: "dark",
+
   themeConfig: {
     logo: "/logo.png",
     siteTitle: "@fuxishi/svg-icon",
