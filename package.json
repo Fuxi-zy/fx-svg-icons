@@ -74,5 +74,6 @@
     "svg",
     "element-plus"
   ],
+  "packageManager": "pnpm@10.32.0",
   "license": "MIT"
 }
