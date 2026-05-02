@@ -19,16 +19,22 @@ hero:
       text: GitHub
       link: https://github.com/Fuxi-zjx/fx-svg-icons
 features:
-  - title: Iconify 图标集
+  - icon: 🌐
+    title: Iconify 图标集
     details: 支持所有 @iconify-json 图标包，一键加载海量图标资源
-  - title: 本地 SVG
+  - icon: 📁
+    title: 本地 SVG
     details: 通过 import.meta.glob 自动加载本地 SVG 文件，支持多级目录
-  - title: 多 UI 框架预设
+  - icon: 🧩
+    title: 多 UI 框架预设
     details: 内置 Element Plus、Naive UI、AntDv Next、TDesign 图标选择器预设
-  - title: Vite 插件
+  - icon: ⚡
+    title: Vite 插件
     details: 自动生成精确到每个图标名的 TypeScript 类型声明，IDE 智能提示
-  - title: 图标选择器
+  - icon: 🔍
+    title: 图标选择器
     details: Headless composable + 多框架预设，搜索、分页、自定义 Tab
-  - title: TypeScript
+  - icon: 🛡️
+    title: TypeScript
     details: 完整类型定义，泛型推导精确图标名，全局组件类型增强
 ---
