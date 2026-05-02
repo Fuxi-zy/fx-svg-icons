@@ -4,7 +4,8 @@ dist
 
 # 锁文件
 *.lock
-*-lock.yaml
+# pnpm-lock.yaml 需要提交以保证 CI 依赖一致性
+!pnpm-lock.yaml
 
 # Editor
 .vscode
