@@ -1,0 +1,7 @@
+packages:
+  - '.'
+  - 'demo-element-plus'
+  - 'demo-naive'
+  - 'demo-antdv-next'
+  - 'demo-tdesign'
+  - 'fx-svg-icons-docs'

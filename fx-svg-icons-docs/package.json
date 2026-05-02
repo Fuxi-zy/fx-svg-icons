@@ -1,0 +1,14 @@
+{
+  "name": "@fuxishi/svg-icon-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev --port 23411",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@fuxishi/vitepress-theme": "2.0.0-alpha.4",
+    "vitepress": "2.0.0-alpha.17"
+  }
+}

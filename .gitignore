@@ -1,0 +1,15 @@
+node_modules
+dist
+*.local
+
+# 锁文件
+*.lock
+*-lock.yaml
+
+# Editor
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db

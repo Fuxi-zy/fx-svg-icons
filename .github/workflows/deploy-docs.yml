@@ -1,0 +1,49 @@
+name: 部署文档
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install
+
+      - run: pnpm build
+
+      - run: pnpm --filter demo build
+      - run: pnpm --filter demo-naive build
+      - run: pnpm --filter demo-antdv-next build
+      - run: pnpm --filter demo-tdesign build
+
+      - run: pnpm --filter @fuxishi/svg-icon-docs build
+
+      - run: |
+          mkdir -p fx-svg-icons-docs/.vitepress/dist/demos
+          cp -r demo-element-plus/dist fx-svg-icons-docs/.vitepress/dist/demos/element-plus
+          cp -r demo-naive/dist fx-svg-icons-docs/.vitepress/dist/demos/naive
+          cp -r demo-antdv-next/dist fx-svg-icons-docs/.vitepress/dist/demos/antdv-next
+          cp -r demo-tdesign/dist fx-svg-icons-docs/.vitepress/dist/demos/tdesign
+
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: fx-svg-icons-docs/.vitepress/dist
+          publish_branch: gh-pages
