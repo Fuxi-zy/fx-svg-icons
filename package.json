@@ -1,6 +1,6 @@
 {
   "name": "@fuxishi/svg-icon",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Vue 3 图标组件，支持 Iconify 图标集和本地 SVG",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -79,6 +79,14 @@
     "svg",
     "element-plus"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fuxi-zy/fx-svg-icons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fuxi-zy/fx-svg-icons/issues"
+  },
+  "homepage": "https://fuxi-zy.github.io/fx-svg-icons/",
   "packageManager": "pnpm@10.33.2",
   "license": "MIT"
 }
