@@ -19,38 +19,51 @@ pnpm add @fuxishi/svg-icon
 
 ## 快速开始
 
-### 注册组件
+### 1. 配置 Vite 插件
 
 ```ts
-import { createApp } from 'vue'
-import { FxIcon, FxIconSelect, initIconifyIcons } from '@fuxishi/svg-icon'
-import '@fuxishi/svg-icon/dist/style.css'
+// vite.config.ts
+import { fxDtsPlugin } from '@fuxishi/svg-icon/vite'
 
-import epIcons from '@iconify-json/ep/icons.json'
+export default defineConfig({
+  plugins: [
+    vue(),
+    fxDtsPlugin({
+      svgGlobPattern: '/src/assets/svgs/**/*.svg', // 本地 SVG 目录（可选）
+      dtsDir: '@/types',                            // 类型声明输出目录
+      splitDts: true,                               // 按图标集拆分类型文件
+    }),
+  ],
+})
+```
+
+### 2. 初始化
+
+```ts
+// main.ts
+import { setupIcons } from 'virtual:fx-svg-icon'
 
 const app = createApp(App)
-
-app.component('FxIcon', FxIcon)
-app.component('FxIconSelect', FxIconSelect)
-
-initIconifyIcons([
-  { prefix: 'ep', icons: epIcons }
-])
-
+setupIcons(app) // 自动注册组件 + 加载图标数据 + 加载本地 SVG
 app.mount('#app')
 ```
 
-### 使用图标
+`setupIcons` 一行搞定所有事情：注册 `FxIcon` / `FxIconSelect` 全局组件、加载已安装的 `@iconify-json/*` 图标数据、通过 `import.meta.glob` 加载本地 SVG 图标。
+
+### 3. 使用图标
 
 ```vue
 <template>
+  <!-- Iconify 图标集 -->
   <FxIcon name="ep:edit" />
   <FxIcon name="ep:delete" :size="24" color="#409eff" />
+
+  <!-- 本地 SVG 图标 -->
   <FxIcon name="svg:my-icon" :size="32" />
 </template>
 ```
 
-### 使用图标选择器
+### 4. 使用图标选择器
 
 ```vue
 <template>
@@ -63,31 +76,7 @@ const selectedIcon = ref('')
 </script>
 ```
 
-### Vite 插件（推荐）
-
-```ts
-// vite.config.ts
-import { fxDtsPlugin } from '@fuxishi/svg-icon/vite'
-
-export default defineConfig({
-  plugins: [
-    vue(),
-    fxDtsPlugin({
-      svgGlobPattern: '/src/assets/svgs/**/*.svg',
-      dtsDir: '@/types',
-      splitDts: true,
-    }),
-  ],
-})
-```
-
-```ts
-// main.ts
-import { setupIcons } from 'virtual:fx-svg-icon'
-
-const app = createApp(App)
-setupIcons(app)
-```
+图标选择器会自动检测当前 UI 框架（Element Plus / Naive UI / AntDv Next / TDesign），匹配对应的组件预设。
 
 ## 文档
 

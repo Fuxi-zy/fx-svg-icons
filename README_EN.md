@@ -19,38 +19,51 @@ pnpm add @fuxishi/svg-icon
 
 ## Quick Start
 
-### Register Components
+### 1. Configure Vite Plugin
 
 ```ts
-import { createApp } from 'vue'
-import { FxIcon, FxIconSelect, initIconifyIcons } from '@fuxishi/svg-icon'
-import '@fuxishi/svg-icon/dist/style.css'
+// vite.config.ts
+import { fxDtsPlugin } from '@fuxishi/svg-icon/vite'
 
-import epIcons from '@iconify-json/ep/icons.json'
+export default defineConfig({
+  plugins: [
+    vue(),
+    fxDtsPlugin({
+      svgGlobPattern: '/src/assets/svgs/**/*.svg', // Local SVG directory (optional)
+      dtsDir: '@/types',                            // Type declaration output directory
+      splitDts: true,                               // Split type files by icon set
+    }),
+  ],
+})
+```
+
+### 2. Initialize
+
+```ts
+// main.ts
+import { setupIcons } from 'virtual:fx-svg-icon'
 
 const app = createApp(App)
-
-app.component('FxIcon', FxIcon)
-app.component('FxIconSelect', FxIconSelect)
-
-initIconifyIcons([
-  { prefix: 'ep', icons: epIcons }
-])
-
+setupIcons(app) // Auto register components + load icon data + load local SVG
 app.mount('#app')
 ```
 
-### Using Icons
+`setupIcons` handles everything in one line: registers `FxIcon` / `FxIconSelect` as global components, loads all installed `@iconify-json/*` icon data, and loads local SVG icons via `import.meta.glob`.
+
+### 3. Using Icons
 
 ```vue
 <template>
+  <!-- Iconify icon sets -->
   <FxIcon name="ep:edit" />
   <FxIcon name="ep:delete" :size="24" color="#409eff" />
+
+  <!-- Local SVG icons -->
   <FxIcon name="svg:my-icon" :size="32" />
 </template>
 ```
 
-### Using Icon Selector
+### 4. Using Icon Selector
 
 ```vue
 <template>
@@ -63,31 +76,7 @@ const selectedIcon = ref('')
 </script>
 ```
 
-### Vite Plugin (Recommended)
-
-```ts
-// vite.config.ts
-import { fxDtsPlugin } from '@fuxishi/svg-icon/vite'
-
-export default defineConfig({
-  plugins: [
-    vue(),
-    fxDtsPlugin({
-      svgGlobPattern: '/src/assets/svgs/**/*.svg',
-      dtsDir: '@/types',
-      splitDts: true,
-    }),
-  ],
-})
-```
-
-```ts
-// main.ts
-import { setupIcons } from 'virtual:fx-svg-icon'
-
-const app = createApp(App)
-setupIcons(app)
-```
+The icon selector automatically detects the current UI framework (Element Plus / Naive UI / AntDv Next / TDesign) and matches the corresponding component preset.
 
 ## Documentation
 
