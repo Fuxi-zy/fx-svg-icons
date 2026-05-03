@@ -54,6 +54,47 @@ const selectedIcon = ref<IconString | "">("")
     </section>
 
     <section>
+      <h2>本地 SVG 图标 (svg:xxx)</h2>
+      <div class="icon-list">
+        <div class="icon-item">
+          <FxIcon name="svg:star" size="32px" color="#d54941" />
+          <span>svg:star</span>
+        </div>
+        <div class="icon-item">
+          <FxIcon name="svg:heart" size="32px" color="#d54941" />
+          <span>svg:heart</span>
+        </div>
+        <div class="icon-item">
+          <FxIcon name="svg:check" size="32px" color="#0052d9" />
+          <span>svg:check</span>
+        </div>
+        <div class="icon-item">
+          <FxIcon name="svg:common-batch-processing" size="32px" color="#d54941" />
+          <span>svg:batch-processing</span>
+        </div>
+        <div class="icon-item">
+          <FxIcon name="svg:statusCode-404-not-found-01" size="32px" color="#d54941" />
+          <span>svg:statusCode-404-not-found-01</span>
+        </div>
+        <div class="icon-item">
+          <FxIcon name="svg:test-test-test-a-not-found-01" size="32px" />
+          <span>svg:test-test-test-a-not-found-01</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>不同尺寸</h2>
+      <div class="icon-list">
+        <FxIcon name="ep:home-filled" size="16px" />
+        <FxIcon name="ep:home-filled" size="24px" />
+        <FxIcon name="ep:home-filled" size="32px" />
+        <FxIcon name="ep:home-filled" size="48px" />
+        <FxIcon name="ep:home-filled" :size="64" />
+      </div>
+    </section>
+
+    <section>
       <h2>图标选择器（自动检测 TDesign）</h2>
       <div class="select-demo">
         <FxIconSelect v-model="selectedIcon" />
