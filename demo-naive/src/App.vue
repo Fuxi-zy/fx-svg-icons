@@ -1,12 +1,29 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import type { IconString } from "@/types/fx-icon-types"
+import { dependencies } from "virtual:demo-deps"
 
 const selectedIcon = ref<IconString | "">("")
 </script>
 
 <template>
-  <div class="demo">
+  <div class="layout">
+    <aside class="sidebar">
+      <h3>依赖检测</h3>
+      <ul class="dep-list">
+        <li v-for="(version, name) in dependencies" :key="name">
+          <n-tooltip trigger="hover">
+            <template #trigger>
+              <span class="dep-name">{{ name }}</span>
+            </template>
+            {{ name }}: {{ version }}
+          </n-tooltip>
+          <span class="dep-version">{{ version }}</span>
+        </li>
+      </ul>
+    </aside>
+
+    <div class="demo">
     <h1>@fuxishi/svg-icon Demo (Naive UI)</h1>
 
     <section>
@@ -111,6 +128,7 @@ const selectedIcon = ref<IconString | "">("")
         </p>
       </div>
     </section>
+    </div>
   </div>
 </template>
 
@@ -122,7 +140,68 @@ body {
   background: #f5f7fa;
 }
 
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: #fff;
+  border-right: 1px solid #e4e7ed;
+  padding: 24px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.sidebar h3 {
+  margin: 0 0 16px;
+  color: #303133;
+  font-size: 16px;
+}
+
+.dep-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dep-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f2f3f5;
+}
+
+.dep-list li:last-child {
+  border-bottom: none;
+}
+
+.dep-name {
+  font-size: 13px;
+  color: #606266;
+  font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+  cursor: default;
+}
+
+.dep-version {
+  font-size: 12px;
+  color: #18a058;
+  font-family: monospace;
+  flex-shrink: 0;
+}
+
 .demo {
+  flex: 1;
   max-width: 900px;
   margin: 0 auto;
   padding: 40px 20px;
