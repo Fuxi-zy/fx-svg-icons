@@ -1,6 +1,6 @@
 <template>
   <div class="fx-icon-select fx-icon-select--naive">
-    <NPopover
+    <n-popover
       :show="iconSelect.visible.value"
       trigger="manual"
       placement="bottom-start"
@@ -10,7 +10,7 @@
       @update:show="(val: boolean) => { if (!val) iconSelect.closePopover() }"
     >
       <template #trigger>
-        <NInput
+        <n-input
           :value="iconSelect.inputValue.value"
           :placeholder="iconSelect.placeholder"
           readonly
@@ -22,23 +22,23 @@
           </template>
           <template #suffix>
             <span class="arrow-icon" :class="{ 'is-reverse': iconSelect.visible.value }">
-              <NIcon :size="14" :component="ArrowDownIcon" />
+              <n-icon :size="14" :component="ArrowDownIcon" />
             </span>
           </template>
-        </NInput>
+        </n-input>
       </template>
 
       <div class="icon-select-content" :style="{ height: `${iconSelect.contentHeight.value}px` }" @click.stop>
-        <NTabs
+        <n-tabs
           :value="iconSelect.activeTab.value"
           type="line"
           size="small"
           :tabs-padding="12"
           @update:value="(val: string | number) => { iconSelect.activeTab.value = String(val) }"
         >
-          <NTabPane v-for="tab in iconSelect.tabs.value" :key="tab.key" :name="tab.key" :tab="tab.label">
+          <n-tab-pane v-for="tab in iconSelect.tabs.value" :key="tab.key" :name="tab.key" :tab="tab.label">
             <div class="tab-content" :style="{ height: `${iconSelect.tabContentHeight.value}px` }">
-              <NInput
+              <n-input
                 :value="iconSelect.searchTexts.value[tab.key]"
                 :placeholder="`搜索${tab.label}图标`"
                 clearable
@@ -47,9 +47,9 @@
                 @update:value="(val: string) => { iconSelect.searchTexts.value[tab.key] = val }"
               >
                 <template #prefix>
-                  <NIcon :size="14" :component="SearchIcon" />
+                  <n-icon :size="14" :component="SearchIcon" />
                 </template>
-              </NInput>
+              </n-input>
               <div
                 :ref="(el: any) => iconSelect.setListRef(tab.key, el as HTMLElement | null)"
                 class="icon-list"
@@ -66,11 +66,11 @@
                   <FxIcon :name="`${tab.key}:${icon}`" :size="20" />
                   <span class="icon-name">{{ icon }}</span>
                 </div>
-                <NEmpty v-if="iconSelect.getFilteredIcons(tab.key).length === 0" description="未找到图标" size="small" />
+                <n-empty v-if="iconSelect.getFilteredIcons(tab.key).length === 0" description="未找到图标" size="small" />
               </div>
               <div v-if="iconSelect.getFilteredIcons(tab.key).length > 0" class="icon-pagination">
                 <span class="pagination-total">共 {{ iconSelect.getFilteredIcons(tab.key).length }} 个图标</span>
-                <NPagination
+                <n-pagination
                   :page="iconSelect.currentPages.value[tab.key] || 1"
                   :page-size="iconSelect.pageSize"
                   :item-count="iconSelect.getFilteredIcons(tab.key).length"
@@ -81,16 +81,15 @@
                 />
               </div>
             </div>
-          </NTabPane>
-        </NTabs>
+          </n-tab-pane>
+        </n-tabs>
       </div>
-    </NPopover>
+    </n-popover>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineComponent, h } from 'vue'
-import { NPopover, NInput, NTabs, NTabPane, NPagination, NEmpty, NIcon } from 'naive-ui'
 import searchSvgRaw from '../../assets/search.svg?raw'
 import arrowDownSvgRaw from '../../assets/arrow-down.svg?raw'
 import FxIcon from '../FxIcon.vue'

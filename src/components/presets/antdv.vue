@@ -44,7 +44,7 @@
                     <FxIcon :name="`${tab.key}:${icon}`" :size="20" />
                     <span class="icon-name">{{ icon }}</span>
                   </div>
-                  <a-empty v-if="iconSelect.getFilteredIcons(tab.key).length === 0" description="未找到图标" :image="simpleImage" />
+                  <a-empty v-if="iconSelect.getFilteredIcons(tab.key).length === 0" description="未找到图标" />
                 </div>
                 <div v-if="iconSelect.getFilteredIcons(tab.key).length > 0" class="icon-pagination">
                   <span class="pagination-total">共 {{ iconSelect.getFilteredIcons(tab.key).length }} 个图标</span>
@@ -89,7 +89,6 @@
 
 <script setup lang="ts">
 import { defineComponent, h } from 'vue'
-import { Empty } from 'antdv-next'
 import searchSvgRaw from '../../assets/search.svg?raw'
 import arrowDownSvgRaw from '../../assets/arrow-down.svg?raw'
 import FxIcon from '../FxIcon.vue'
@@ -118,8 +117,6 @@ const props = withDefaults(defineProps<FxIconSelectProps>(), {
 const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>()
-
-const simpleImage = Empty.PRESENTED_IMAGE_SIMPLE
 
 const iconSelect = useIconSelect({
   modelValue: () => props.modelValue,

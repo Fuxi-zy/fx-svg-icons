@@ -5,7 +5,8 @@ All version changes. Click the version number to view the GitHub Release details
 ## [v1.0.4](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.4)
 
 - Removed static imports of external icon packages (`tdesign-icons-vue-next`, `@element-plus/icons-vue`, `@antdv-next/icons`) from FxIconSelect presets, replaced with built-in SVGs
-- Fixed build errors in consumer projects that don't have the corresponding UI icon packages installed
+- Removed static imports of UI library components from naive/antdv presets, now resolved at runtime via global registration
+- Fixed build errors in consumer projects that don't have the corresponding UI libraries installed
 
 ## [v1.0.3](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.3)
 
