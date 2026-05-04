@@ -2,6 +2,10 @@
 
 所有版本变更记录，点击版本号可查看 GitHub Release 详情。
 
+## [v1.0.3](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.3)
+
+- 自动生成的 `IconString` 类型添加 `export` 导出
+
 ## [v1.0.2](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.2)
 
 - 路径解析支持所有 `resolve.alias` 配置的前缀（`@/`、`~/` 等）

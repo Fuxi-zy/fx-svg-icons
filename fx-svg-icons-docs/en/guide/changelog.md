@@ -2,6 +2,10 @@
 
 All version changes. Click the version number to view the GitHub Release details.
 
+## [v1.0.3](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.3)
+
+- Added `export` to the auto-generated `IconString` type
+
 ## [v1.0.2](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.2)
 
 - Path resolution supports all `resolve.alias` prefixes (`@/`, `~/`, etc.)
