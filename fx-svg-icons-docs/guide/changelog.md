@@ -2,11 +2,15 @@
 
 所有版本变更记录，点击版本号可查看 GitHub Release 详情。
 
-## [v1.0.4](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.4)
+## [v1.0.5](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.5)
 
 - 移除 FxIconSelect 各预设对外部图标包的静态依赖（`tdesign-icons-vue-next`、`@element-plus/icons-vue`、`@antdv-next/icons`），改用内置 SVG
 - 移除 naive/antdv 预设对 UI 库组件的静态导入，改为运行时通过全局注册解析
 - 修复消费者项目未安装对应 UI 库时构建报错的问题
+
+## [v1.0.4](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.4)
+
+- 移除 FxIconSelect 各预设对外部图标包的静态依赖，改用内置 SVG
 
 ## [v1.0.3](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.3)
 
