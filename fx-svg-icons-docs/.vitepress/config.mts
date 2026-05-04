@@ -27,6 +27,7 @@ export default defineConfig<ThemeConfig>({
           { text: "组合式函数", link: "/composables/use-icon-select" },
           { text: "插件", link: "/plugins/vite-plugin" },
           { text: "示例", link: "/demos" },
+          { text: "更新日志", link: "/guide/changelog" },
         ],
         sidebar: {
           "/guide/": [
@@ -36,6 +37,7 @@ export default defineConfig<ThemeConfig>({
                 { text: "快速开始", link: "/guide/getting-started" },
                 { text: "安装", link: "/guide/installation" },
                 { text: "Iconify 图标集", link: "/guide/iconify" },
+                { text: "更新日志", link: "/guide/changelog" },
               ],
             },
           ],
@@ -93,6 +95,7 @@ export default defineConfig<ThemeConfig>({
           { text: "Composables", link: "/en/composables/use-icon-select" },
           { text: "Plugins", link: "/en/plugins/vite-plugin" },
           { text: "Demos", link: "/en/demos" },
+          { text: "Changelog", link: "/en/guide/changelog" },
         ],
         sidebar: {
           "/en/guide/": [
@@ -102,6 +105,7 @@ export default defineConfig<ThemeConfig>({
                 { text: "Getting Started", link: "/en/guide/getting-started" },
                 { text: "Installation", link: "/en/guide/installation" },
                 { text: "Iconify Icons", link: "/en/guide/iconify" },
+                { text: "Changelog", link: "/en/guide/changelog" },
               ],
             },
           ],
