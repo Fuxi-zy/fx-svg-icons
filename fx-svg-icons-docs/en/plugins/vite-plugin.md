@@ -22,12 +22,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
     },
   },
   plugins: [
     vue(),
     fxDtsPlugin({
-      svgGlobPattern: '/src/assets/svgs/**/*.svg',
+      svgGlobPattern: '~/svgs',
       dtsDir: '@/types',
       splitDts: true,
     }),
@@ -41,9 +42,35 @@ export default defineConfig({
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `svgGlobPattern` | `string` | — | Glob path for local SVG directory |
-| `dtsDir` | `string` | `'src'` | Type file output directory, supports `@/xxx` or `src/xxx` format |
+| `svgGlobPattern` | `string` | — | Local SVG directory path, supports alias prefixes (e.g. `@/`, `~/`), auto-completes `/**/*.svg` when no glob pattern |
+| `dtsDir` | `string` | `'src'` | Type file output directory, supports alias prefixes, `/xxx` root path, relative paths (based on vite.config.ts directory) |
 | `splitDts` | `boolean` | `false` | Whether to split type files by icon package |
+
+### svgGlobPattern Supported Formats
+
+Assuming `resolve.alias` has `@` → `src` and `~` → `src/assets`:
+
+| Value | Resolved | Description |
+|-------|----------|-------------|
+| `'/src/assets/svgs/**/*.svg'` | `/src/assets/svgs/**/*.svg` | Root path + full glob |
+| `'/src/assets/svgs'` | `/src/assets/svgs/**/*.svg` | Root path, auto-completes glob |
+| `'@/assets/svgs'` | `/src/assets/svgs/**/*.svg` | `@` alias, auto-completes glob |
+| `'@/assets/svgs/**/*.svg'` | `/src/assets/svgs/**/*.svg` | `@` alias + full glob |
+| `'~/svgs'` | `/src/assets/svgs/**/*.svg` | `~` alias, auto-completes glob |
+| `'~/svgs/**/*.svg'` | `/src/assets/svgs/**/*.svg` | `~` alias + full glob |
+
+### dtsDir Supported Formats
+
+Assuming `resolve.alias` has `@` → `src`:
+
+| Value | Resolved | Description |
+|-------|----------|-------------|
+| `'src'` | `<root>/src/` | Default value |
+| `'src/types'` | `<root>/src/types/` | Subdirectory |
+| `'/types'` | `<root>/types/` | Root path |
+| `'@/types'` | `<root>/src/types/` | `@` alias |
+| `'types'` | `<root>/types/` | Relative path |
+| `'../types'` | — | Outside project root, throws error |
 
 ## Features
 
@@ -97,9 +124,10 @@ setupIcons(app) // One line for all initialization
 
 ### 3. Path Change Auto-Handling
 
-- When `dtsDir` changes, old files are automatically deleted and new ones generated
+- When `dtsDir` changes, old files (including split files) are automatically deleted and new ones generated
 - Import statements referencing old type files are automatically updated
-- Supports `@` path alias detection
+- Supports all `resolve.alias` configured path aliases
+- Throws an error when the resolved path is outside the project root
 
 ## TypeScript Configuration
 

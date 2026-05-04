@@ -17,8 +17,13 @@ function demoDepsPlugin(): Plugin {
     load(id) {
       if (id !== resolvedId) return
       const root = fileURLToPath(new URL(".", import.meta.url))
-      const pkg = JSON.parse(readFileSync(resolve(root, "package.json"), "utf-8"))
-      const deps: Record<string, string> = { ...pkg.dependencies, ...pkg.devDependencies }
+      const pkg = JSON.parse(
+        readFileSync(resolve(root, "package.json"), "utf-8"),
+      )
+      const deps: Record<string, string> = {
+        ...pkg.dependencies,
+        ...pkg.devDependencies,
+      }
       const resolved: Record<string, string> = {}
       for (const [name, declared] of Object.entries(deps)) {
         const modPkgPath = resolve(root, "node_modules", name, "package.json")
@@ -38,13 +43,14 @@ export default defineConfig({
   base: "/fx-svg-icons/demos/tdesign/",
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@": resolve(__dirname, "src"),
+      "~": resolve(__dirname, "src/assets"),
     },
   },
   plugins: [
     vue(),
     fxDtsPlugin({
-      svgGlobPattern: "/src/assets/svgs/**/*.svg",
+      svgGlobPattern: "~/svgs",
       dtsDir: "@/types",
       splitDts: true,
     }),

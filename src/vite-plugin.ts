@@ -8,7 +8,7 @@ import {
   unlinkSync,
   mkdirSync,
 } from "node:fs"
-import { resolve, relative, join, dirname } from "node:path"
+import { resolve, relative, join, dirname, isAbsolute } from "node:path"
 
 const VIRTUAL_MODULE_ID = "virtual:fx-svg-icon"
 const RESOLVED_MODULE_ID = "\0" + VIRTUAL_MODULE_ID
@@ -35,6 +35,7 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
   let config: ResolvedConfig
   let logger: Logger
   let dtsFilePath: string
+  let resolvedSvgGlobPattern = svgGlobPattern
 
   return {
     name: "fx-svg-dts",
@@ -43,6 +44,7 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
       config = resolvedConfig
       logger = createLogger(config.logLevel, { prefix: "[fx-svg-dts]" })
       dtsFilePath = resolveDtsDir(dtsDir || "src")
+      resolvedSvgGlobPattern = resolveSvgGlobPattern(svgGlobPattern)
       cleanupOldFile()
     },
 
@@ -66,23 +68,91 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
   }
 
   /**
-   * 解析类型文件目录路径，支持 @/xxx 和 src/xxx 格式
+   * 解析路径中的别名前缀，支持所有 resolve.alias 配置
+   * 如 @/xxx → src/xxx，~/xxx → src/assets/xxx
+   * 返回 { resolved, aliasPrefix }，未匹配别名时 resolved 为 null
+   */
+  function resolveAliasPath(
+    path: string,
+    optionName: string,
+  ): { resolved: string; aliasPrefix: string } | null {
+    const aliases: Array<{ find: string | RegExp; replacement: string }> =
+      config.resolve?.alias || []
+
+    for (const alias of aliases) {
+      if (typeof alias.find !== "string") continue
+      const prefix = alias.find + "/"
+      if (path.startsWith(prefix)) {
+        return {
+          resolved: resolve(alias.replacement, path.slice(prefix.length)),
+          aliasPrefix: alias.find,
+        }
+      }
+    }
+
+    // 路径使用了 <前缀>/ 格式但未匹配到任何别名时，给出提示
+    const match = path.match(/^([^/]+)\//)
+    if (match && !path.startsWith("/") && !path.startsWith("./") && !path.startsWith("../")) {
+      throw new Error(
+        `[fx-svg-dts] ${optionName} 使用了 '${match[1]}/' 前缀，但项目中未配置 '${match[1]}' 路径别名。请在 vite.config.ts 的 resolve.alias 中配置`,
+      )
+    }
+
+    return null
+  }
+
+  /**
+   * 解析 svgGlobPattern，支持所有别名前缀
+   */
+  function resolveSvgGlobPattern(pattern?: string): string | undefined {
+    if (!pattern) return pattern
+
+    let resolved = pattern
+    const aliasResult = resolveAliasPath(pattern, "svgGlobPattern")
+    if (aliasResult) {
+      const relativeToRoot = relative(
+        config.root,
+        aliasResult.resolved,
+      ).replace(/\\/g, "/")
+      resolved = "/" + relativeToRoot
+    }
+
+    if (!resolved.includes("*")) {
+      resolved = resolved.replace(/\/+$/, "") + "/**/*.svg"
+    }
+
+    return resolved
+  }
+
+  /**
+   * 解析类型文件目录路径，支持别名前缀、/xxx、相对路径格式
+   * 相对路径基于 vite.config.ts 所在目录（config.root）解析
    */
   function resolveDtsDir(dir: string): string {
-    if (dir.startsWith("@/")) {
-      const aliases: Array<{ find: string | RegExp; replacement: string }> =
-        config.resolve?.alias || []
-      const atAlias = aliases.find(
-        (a) => typeof a.find === "string" && a.find === "@",
-      )
-      if (!atAlias) {
-        throw new Error(
-          `[fx-svg-dts] dtsDir 使用了 @/ 前缀，但项目中未配置 '@' 路径别名。请在 vite.config.ts 的 resolve.alias 中配置 '@'`,
-        )
-      }
-      return resolve(atAlias.replacement, dir.slice(2), DTS_FILENAME)
+    let resolved: string
+    const aliasResult = resolveAliasPath(dir, "dtsDir")
+    if (aliasResult) {
+      resolved = resolve(aliasResult.resolved, DTS_FILENAME)
+    } else if (dir.startsWith("/")) {
+      resolved = resolve(config.root, dir.slice(1), DTS_FILENAME)
+    } else {
+      resolved = resolve(config.root, dir, DTS_FILENAME)
     }
-    return resolve(config.root, dir, DTS_FILENAME)
+
+    ensurePathInProject(resolved, "dtsDir")
+    return resolved
+  }
+
+  /**
+   * 校验路径是否在项目根目录内，超出时抛出错误
+   */
+  function ensurePathInProject(filePath: string, optionName: string) {
+    const rel = relative(config.root, filePath)
+    if (rel.startsWith("..") || isAbsolute(rel)) {
+      throw new Error(
+        `[fx-svg-dts] ${optionName} 解析后的路径 "${filePath}" 超出了项目根目录 "${config.root}"，请使用项目内的路径`,
+      )
+    }
   }
 
   /**
@@ -118,10 +188,13 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
       existsSync(previousPath)
     ) {
       oldPath = previousPath
+      const oldDir = dirname(previousPath)
       unlinkSync(previousPath)
       logger.info(`已删除旧文件: ${relative(config.root, previousPath)}`, {
         timestamp: true,
       })
+      // 清理旧目录下的拆分文件
+      cleanupSplitFiles(oldDir)
     }
     // 首次使用新版本时，清理默认位置的旧文件
     if (
@@ -130,10 +203,12 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
       existsSync(defaultOldPath)
     ) {
       oldPath = defaultOldPath
+      const defaultOldDir = dirname(defaultOldPath)
       unlinkSync(defaultOldPath)
       logger.info(`已删除旧文件: ${relative(config.root, defaultOldPath)}`, {
         timestamp: true,
       })
+      cleanupSplitFiles(defaultOldDir)
     }
 
     // 更新项目中的 import 引用路径
@@ -155,15 +230,15 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
   }
 
   /**
-   * 删除目录下所有 fx-icon-{prefix}-types.d.ts 拆分文件
+   * 删除指定目录下所有 fx-icon-{prefix}-types.d.ts 拆分文件
    */
-  function cleanupSplitFiles() {
-    const dtsDir = dirname(dtsFilePath)
-    if (!existsSync(dtsDir)) return
-    const entries = readdirSync(dtsDir)
+  function cleanupSplitFiles(targetDir?: string) {
+    const dir = targetDir || dirname(dtsFilePath)
+    if (!existsSync(dir)) return
+    const entries = readdirSync(dir)
     for (const entry of entries) {
       if (/^fx-icon-.+-types\.d\.ts$/.test(entry) && entry !== DTS_FILENAME) {
-        const filePath = join(dtsDir, entry)
+        const filePath = join(dir, entry)
         unlinkSync(filePath)
         logger.info(`已删除旧文件: ${entry}`, { timestamp: true })
       }
@@ -524,9 +599,9 @@ declare module 'virtual:fx-svg-icon' {
       collectionItems.push(`{ prefix: '${col.prefix}', icons: ${varName} }`)
     }
 
-    const svgLoading = svgGlobPattern
+    const svgLoading = resolvedSvgGlobPattern
       ? `
-  const svgModules = import.meta.glob('${svgGlobPattern}', { eager: true, query: '?raw' })
+  const svgModules = import.meta.glob('${resolvedSvgGlobPattern}', { eager: true, query: '?raw' })
   initSvgIcons(svgModules)`
       : ""
 

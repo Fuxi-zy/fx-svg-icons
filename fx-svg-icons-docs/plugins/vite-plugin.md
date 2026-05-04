@@ -22,12 +22,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
     },
   },
   plugins: [
     vue(),
     fxDtsPlugin({
-      svgGlobPattern: '/src/assets/svgs/**/*.svg',
+      svgGlobPattern: '~/svgs',
       dtsDir: '@/types',
       splitDts: true,
     }),
@@ -41,9 +42,35 @@ export default defineConfig({
 
 | 选项 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `svgGlobPattern` | `string` | — | 本地 SVG 目录的 glob 路径 |
-| `dtsDir` | `string` | `'src'` | 类型文件输出目录，支持 `@/xxx` 或 `src/xxx` 格式 |
+| `svgGlobPattern` | `string` | — | 本地 SVG 目录路径，支持别名前缀（如 `@/`、`~/`），不含 glob 时自动补全 `/**/*.svg` |
+| `dtsDir` | `string` | `'src'` | 类型文件输出目录，支持别名前缀、`/xxx` 根路径、相对路径（基于 vite.config.ts 所在目录） |
 | `splitDts` | `boolean` | `false` | 是否按图标包拆分类型文件 |
+
+### svgGlobPattern 支持的格式
+
+假设 `resolve.alias` 配置了 `@` → `src`，`~` → `src/assets`：
+
+| 配置值 | 解析结果 | 说明 |
+|--------|----------|------|
+| `'/src/assets/svgs/**/*.svg'` | `/src/assets/svgs/**/*.svg` | 根路径 + 完整 glob |
+| `'/src/assets/svgs'` | `/src/assets/svgs/**/*.svg` | 根路径，自动补全 glob |
+| `'@/assets/svgs'` | `/src/assets/svgs/**/*.svg` | `@` 别名，自动补全 glob |
+| `'@/assets/svgs/**/*.svg'` | `/src/assets/svgs/**/*.svg` | `@` 别名 + 完整 glob |
+| `'~/svgs'` | `/src/assets/svgs/**/*.svg` | `~` 别名，自动补全 glob |
+| `'~/svgs/**/*.svg'` | `/src/assets/svgs/**/*.svg` | `~` 别名 + 完整 glob |
+
+### dtsDir 支持的格式
+
+假设 `resolve.alias` 配置了 `@` → `src`：
+
+| 配置值 | 解析结果 | 说明 |
+|--------|----------|------|
+| `'src'` | `<root>/src/` | 默认值 |
+| `'src/types'` | `<root>/src/types/` | 子目录 |
+| `'/types'` | `<root>/types/` | 根路径 |
+| `'@/types'` | `<root>/src/types/` | `@` 别名 |
+| `'types'` | `<root>/types/` | 相对路径 |
+| `'../types'` | — | 超出项目根目录，报错 |
 
 ## 功能
 
@@ -97,9 +124,10 @@ setupIcons(app) // 一行搞定所有初始化
 
 ### 3. 路径变更自动处理
 
-- `dtsDir` 变更时，自动删除旧文件并生成新文件
+- `dtsDir` 变更时，自动删除旧文件（包括拆分文件）并生成新文件
 - 自动更新项目中引用了旧类型文件的 import 语句
-- 支持检测 `@` 路径别名
+- 支持所有 `resolve.alias` 配置的路径别名
+- 解析后的路径超出项目根目录时会报错提示
 
 ## TypeScript 配置
 

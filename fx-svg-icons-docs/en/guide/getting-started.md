@@ -85,11 +85,17 @@ The Vite plugin auto-generates icon type declarations for full IDE smart hints.
 import { fxDtsPlugin } from '@fuxishi/svg-icon/vite'
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
+    },
+  },
   plugins: [
     vue(),
     fxDtsPlugin({
-      svgGlobPattern: '/src/assets/svgs/**/*.svg',
-      dtsDir: '@/types',
+      svgGlobPattern: '~/svgs',       // Also supports: '/src/assets/svgs', '@/assets/svgs', '~/svgs/**/*.svg'
+      dtsDir: '@/types',              // Also supports: 'src', '/types', 'src/types'
       splitDts: true,
     }),
   ],

@@ -26,12 +26,20 @@ pnpm add @fuxishi/svg-icon
 import { fxDtsPlugin } from '@fuxishi/svg-icon/vite'
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
+    },
+  },
   plugins: [
     vue(),
     fxDtsPlugin({
-      svgGlobPattern: '/src/assets/svgs/**/*.svg', // 本地 SVG 目录（可选）
-      dtsDir: '@/types',                            // 类型声明输出目录
-      splitDts: true,                               // 按图标集拆分类型文件
+      svgGlobPattern: '~/svgs',       // 本地 SVG 目录（可选），支持别名前缀，自动补全 glob
+      // svgGlobPattern 也支持: '/src/assets/svgs', '@/assets/svgs', '~/svgs/**/*.svg'
+      dtsDir: '@/types',              // 类型声明输出目录，支持别名前缀
+      // dtsDir 也支持: 'src', '/types', 'src/types'
+      splitDts: true,                 // 按图标集拆分类型文件
     }),
   ],
 })

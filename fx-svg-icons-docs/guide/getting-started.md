@@ -85,11 +85,17 @@ const selectedIcon = ref('')
 import { fxDtsPlugin } from '@fuxishi/svg-icon/vite'
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
+    },
+  },
   plugins: [
     vue(),
     fxDtsPlugin({
-      svgGlobPattern: '/src/assets/svgs/**/*.svg',
-      dtsDir: '@/types',
+      svgGlobPattern: '~/svgs',       // 也支持: '/src/assets/svgs', '@/assets/svgs', '~/svgs/**/*.svg'
+      dtsDir: '@/types',              // 也支持: 'src', '/types', 'src/types'
       splitDts: true,
     }),
   ],
