@@ -27,7 +27,7 @@
                   @change="(val: string) => { iconSelect.searchTexts.value[tab.key] = val }"
                 >
                   <template #prefixIcon>
-                    <SearchIcon size="16px" style="color: var(--td-text-color-placeholder, #c0c4cc)" />
+                    <SearchIcon class="search-icon" style="color: var(--td-text-color-placeholder, #c0c4cc)" />
                   </template>
                 </t-input>
                 <div
@@ -91,10 +91,26 @@
 </template>
 
 <script setup lang="ts">
-import { SearchIcon, ChevronDownIcon } from 'tdesign-icons-vue-next'
+import { defineComponent, h } from 'vue'
+import searchSvgRaw from '../../assets/search.svg?raw'
+import arrowDownSvgRaw from '../../assets/arrow-down.svg?raw'
 import FxIcon from '../FxIcon.vue'
 import { useIconSelect } from '../../composables/useIconSelect'
 import type { FxIconSelectProps } from '../../types'
+
+const SearchIcon = defineComponent({
+  name: 'SearchIcon',
+  render() {
+    return h('span', { innerHTML: searchSvgRaw })
+  }
+})
+
+const ChevronDownIcon = defineComponent({
+  name: 'ChevronDownIcon',
+  render() {
+    return h('span', { innerHTML: arrowDownSvgRaw })
+  }
+})
 
 const props = withDefaults(defineProps<FxIconSelectProps>(), {
   placeholder: '请选择图标',
@@ -126,6 +142,24 @@ const iconSelect = useIconSelect({
 .arrow-icon {
   transition: transform 0.3s;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+}
+
+.search-icon {
+  display: inline-flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.search-icon :deep(svg),
+.arrow-icon :deep(svg) {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 .arrow-icon.is-reverse {

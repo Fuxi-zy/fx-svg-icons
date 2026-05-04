@@ -81,10 +81,26 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowDown, Search } from '@element-plus/icons-vue'
+import { defineComponent, h } from 'vue'
+import searchSvgRaw from '../../assets/search.svg?raw'
+import arrowDownSvgRaw from '../../assets/arrow-down.svg?raw'
 import FxIcon from '../FxIcon.vue'
 import { useIconSelect } from '../../composables/useIconSelect'
 import type { FxIconSelectProps } from '../../types'
+
+const Search = defineComponent({
+  name: 'Search',
+  render() {
+    return h('span', { innerHTML: searchSvgRaw })
+  }
+})
+
+const ArrowDown = defineComponent({
+  name: 'ArrowDown',
+  render() {
+    return h('span', { innerHTML: arrowDownSvgRaw })
+  }
+})
 
 const props = withDefaults(defineProps<FxIconSelectProps>(), {
   placeholder: '请选择图标',

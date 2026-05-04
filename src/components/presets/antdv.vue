@@ -25,7 +25,7 @@
                   @update:value="(val: string) => { iconSelect.searchTexts.value[tab.key] = val }"
                 >
                   <template #prefix>
-                    <SearchOutlined :style="{ color: '#bfbfbf' }" />
+                    <SearchOutlined class="search-icon" :style="{ color: '#bfbfbf' }" />
                   </template>
                 </a-input>
                 <div
@@ -88,11 +88,27 @@
 </template>
 
 <script setup lang="ts">
+import { defineComponent, h } from 'vue'
 import { Empty } from 'antdv-next'
-import { SearchOutlined, DownOutlined } from '@antdv-next/icons'
+import searchSvgRaw from '../../assets/search.svg?raw'
+import arrowDownSvgRaw from '../../assets/arrow-down.svg?raw'
 import FxIcon from '../FxIcon.vue'
 import { useIconSelect } from '../../composables/useIconSelect'
 import type { FxIconSelectProps } from '../../types'
+
+const SearchOutlined = defineComponent({
+  name: 'SearchOutlined',
+  render() {
+    return h('span', { innerHTML: searchSvgRaw })
+  }
+})
+
+const DownOutlined = defineComponent({
+  name: 'DownOutlined',
+  render() {
+    return h('span', { innerHTML: arrowDownSvgRaw })
+  }
+})
 
 const props = withDefaults(defineProps<FxIconSelectProps>(), {
   placeholder: '请选择图标',
@@ -126,6 +142,24 @@ const iconSelect = useIconSelect({
 .arrow-icon {
   transition: transform 0.3s;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+}
+
+.search-icon {
+  display: inline-flex;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+}
+
+.search-icon :deep(svg),
+.arrow-icon :deep(svg) {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 .arrow-icon.is-reverse {
