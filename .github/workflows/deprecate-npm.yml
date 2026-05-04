@@ -1,0 +1,37 @@
+name: 废弃 npm 版本
+
+on:
+  workflow_dispatch:
+    inputs:
+      versions:
+        description: '要废弃的版本号，多个用逗号分隔（如 1.0.2,1.0.3）'
+        required: true
+        type: string
+      message:
+        description: '废弃说明'
+        required: false
+        default: '此版本已废弃，请升级到最新版本'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  deprecate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - name: 废弃指定版本
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+        run: |
+          IFS=',' read -ra VERSIONS <<< "${{ inputs.versions }}"
+          for v in "${VERSIONS[@]}"; do
+            v=$(echo "$v" | xargs)
+            echo "废弃 @fuxishi/svg-icon@$v ..."
+            npm deprecate "@fuxishi/svg-icon@$v" "${{ inputs.message }}" --registry=https://registry.npmjs.org/
+          done
