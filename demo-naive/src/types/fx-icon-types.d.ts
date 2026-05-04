@@ -5,7 +5,7 @@ import type { FunctionalComponent } from 'vue'
 import type { IconStringAntDesign } from './fx-icon-ant-design-types'
 import type { IconStringEp } from './fx-icon-ep-types'
 
-type IconString =
+export type IconString =
   | `svg:${string}`
   | IconStringAntDesign
   | IconStringEp

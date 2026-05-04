@@ -440,7 +440,7 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
 
 import type { FunctionalComponent } from 'vue'
 
-type IconString =
+export type IconString =
   | ${iconTypes.join("\n  | ")}
 
 declare module 'vue' {
@@ -548,7 +548,7 @@ export type IconString${pascalName} =
 import type { FunctionalComponent } from 'vue'
 ${imports}
 
-type IconString =
+export type IconString =
   | ${unionParts.join("\n  | ")}
 
 declare module 'vue' {
