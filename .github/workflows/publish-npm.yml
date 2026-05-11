@@ -56,18 +56,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
       - name: 发布 Element Plus Picker
-        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-element-plus-picker
+        run: cd pickers/element-plus && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
       - name: 发布 Naive UI Picker
-        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-naive-picker
+        run: cd pickers/naive && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
       - name: 发布 AntDv Picker
-        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-antdv-picker
+        run: cd pickers/antdv && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
       - name: 发布 TDesign Picker
-        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-tdesign-picker
+        run: cd pickers/tdesign && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
