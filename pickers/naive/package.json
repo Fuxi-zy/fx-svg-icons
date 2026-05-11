@@ -1,6 +1,6 @@
 {
   "name": "@fuxishi/svg-icon-naive-picker",
-  "version": "1.0.7",
+  "version": "1.0.7-alpha.0",
   "description": "FxIconSelect Naive UI 预设 for @fuxishi/svg-icon",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -14,7 +14,9 @@
     },
     "./dist/style.css": "./dist/svg-icon-naive-picker.css"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build && vue-tsc -p tsconfig.build.json"
   },

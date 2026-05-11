@@ -4,6 +4,13 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: '发布标签 (latest / alpha / beta)'
+        required: false
+        default: 'latest'
+        type: string
 
 permissions:
   contents: read
@@ -30,18 +37,37 @@ jobs:
       - run: pnpm --filter @fuxishi/svg-icon-antdv-picker build
       - run: pnpm --filter @fuxishi/svg-icon-tdesign-picker build
 
-      - run: npm publish --access public
+      - name: 判断发布标签
+        id: release-tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            VERSION="${GITHUB_REF#refs/tags/v}"
+            if echo "$VERSION" | grep -qE '(alpha|beta|rc)'; then
+              echo "tag=alpha" >> $GITHUB_OUTPUT
+            else
+              echo "tag=latest" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: 发布主包
+        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
-      - run: npm publish --access public -w @fuxishi/svg-icon-element-plus-picker
+      - name: 发布 Element Plus Picker
+        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-element-plus-picker
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
-      - run: npm publish --access public -w @fuxishi/svg-icon-naive-picker
+      - name: 发布 Naive UI Picker
+        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-naive-picker
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
-      - run: npm publish --access public -w @fuxishi/svg-icon-antdv-picker
+      - name: 发布 AntDv Picker
+        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-antdv-picker
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
-      - run: npm publish --access public -w @fuxishi/svg-icon-tdesign-picker
+      - name: 发布 TDesign Picker
+        run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }} -w @fuxishi/svg-icon-tdesign-picker
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
