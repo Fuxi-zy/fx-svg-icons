@@ -1,6 +1,6 @@
 {
   "name": "@fuxishi/svg-icon",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Vue 3 图标组件，支持 Iconify 图标集和本地 SVG",
   "type": "module",
   "main": "./dist/index.cjs",

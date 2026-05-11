@@ -2,6 +2,10 @@
 
 All version changes. Click the version number to view the GitHub Release details.
 
+## [v1.0.6](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.6)
+
+- Fixed local SVG icons not responding to the `color` prop
+
 ## [v1.0.5](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.5)
 
 - Removed static imports of external icon packages (`tdesign-icons-vue-next`, `@element-plus/icons-vue`, `@antdv-next/icons`) from FxIconSelect presets, replaced with built-in SVGs

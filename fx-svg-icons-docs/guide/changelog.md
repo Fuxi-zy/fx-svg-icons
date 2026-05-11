@@ -2,6 +2,10 @@
 
 所有版本变更记录，点击版本号可查看 GitHub Release 详情。
 
+## [v1.0.6](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.6)
+
+- 修复本地 SVG 图标无法通过 `color` 属性修改颜色的问题
+
 ## [v1.0.5](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.5)
 
 - 移除 FxIconSelect 各预设对外部图标包的静态依赖（`tdesign-icons-vue-next`、`@element-plus/icons-vue`、`@antdv-next/icons`），改用内置 SVG
