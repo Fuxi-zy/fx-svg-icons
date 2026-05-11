@@ -17,16 +17,16 @@ const iconName = ref('')
 
 ## Auto Preset Detection
 
-`FxIconSelect` automatically detects the installed UI framework and loads the corresponding preset:
+After installing a UI framework picker package, the Vite plugin automatically detects and registers the corresponding preset:
 
-| UI Framework | Detection Method | Preset Component |
-|--------------|------------------|------------------|
-| Element Plus | Detects `ElPopover` global component | Element Plus style selector |
-| Naive UI | Detects `NPopover` global component | Naive UI style selector |
-| AntDv Next | Detects `APopover` global component | AntDv Next style selector |
-| TDesign | Detects `TPopup` global component | TDesign style selector |
+| UI Framework | Package | Preset Component |
+|--------------|---------|------------------|
+| Element Plus | `@fuxishi/svg-icon-element-plus-picker` | Element Plus style selector |
+| Naive UI | `@fuxishi/svg-icon-naive-picker` | Naive UI style selector |
+| AntDv Next | `@fuxishi/svg-icon-antdv-picker` | AntDv Next style selector |
+| TDesign | `@fuxishi/svg-icon-tdesign-picker` | TDesign style selector |
 
-After installing a UI framework, the selector automatically uses the corresponding preset without configuration.
+After installing a picker package, `setupIcons(app)` will automatically register the `FxIconSelect` component without any configuration.
 
 ## Props
 
@@ -44,7 +44,7 @@ After installing a UI framework, the selector automatically uses the correspondi
 
 ## Headless Usage
 
-If you don't use a preset component, you can customize the selector UI via the `useIconSelect` composable:
+If you don't use a UI framework preset, you can customize the selector UI via the `useIconSelect` composable:
 
 ```vue
 <template>
@@ -57,6 +57,8 @@ If you don't use a preset component, you can customize the selector UI via the `
 ```
 
 See [useIconSelect](/en/composables/use-icon-select) for details.
+
+[View Custom Demo](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}
 
 ## Examples
 

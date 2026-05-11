@@ -86,3 +86,5 @@ const iconSelect = useIconSelect({
 })
 </script>
 ```
+
+[查看完整自定义示例](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}

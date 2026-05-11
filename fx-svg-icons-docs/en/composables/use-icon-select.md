@@ -84,3 +84,5 @@ const iconSelect = useIconSelect({
 })
 </script>
 ```
+
+[View Custom Demo](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}

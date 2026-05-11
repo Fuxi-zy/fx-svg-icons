@@ -17,16 +17,16 @@ const iconName = ref('')
 
 ## 自动预设检测
 
-`FxIconSelect` 会自动检测当前项目中安装的 UI 框架，加载对应的预设组件：
+安装对应的 UI 框架 picker 包后，Vite 插件会自动检测并注册对应预设的选择器组件：
 
-| UI 框架 | 检测方式 | 预设组件 |
-|---------|----------|----------|
-| Element Plus | 检测 `ElPopover` 全局组件 | Element Plus 风格的选择器 |
-| Naive UI | 检测 `NPopover` 全局组件 | Naive UI 风格的选择器 |
-| AntDv Next | 检测 `APopover` 全局组件 | AntDv Next 风格的选择器 |
-| TDesign | 检测 `TPopup` 全局组件 | TDesign 风格的选择器 |
+| UI 框架 | 安装包 | 预设组件 |
+|---------|--------|----------|
+| Element Plus | `@fuxishi/svg-icon-element-plus-picker` | Element Plus 风格的选择器 |
+| Naive UI | `@fuxishi/svg-icon-naive-picker` | Naive UI 风格的选择器 |
+| AntDv Next | `@fuxishi/svg-icon-antdv-picker` | AntDv Next 风格的选择器 |
+| TDesign | `@fuxishi/svg-icon-tdesign-picker` | TDesign 风格的选择器 |
 
-安装对应的 UI 框架后，选择器会自动使用对应的预设，无需任何配置。
+安装 picker 包后，`setupIcons(app)` 会自动注册 `FxIconSelect` 组件，无需手动配置。
 
 ## Props
 
@@ -44,7 +44,7 @@ const iconName = ref('')
 
 ## Headless 使用
 
-如果不使用预设组件，可以通过 `useIconSelect` composable 自定义选择器的 UI：
+如果不使用任何 UI 框架预设，可以通过 `useIconSelect` composable 自定义选择器的 UI：
 
 ```vue
 <template>
@@ -57,6 +57,8 @@ const iconName = ref('')
 ```
 
 详见 [useIconSelect](/composables/use-icon-select)。
+
+[查看自定义示例](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}
 
 ## 示例
 

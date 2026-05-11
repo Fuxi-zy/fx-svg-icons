@@ -34,6 +34,12 @@
 
 [官方文档](https://tdesign.tencent.com/vue-next/getting-started){target="_blank"}
 
+## 自定义
+
+不依赖任何 UI 框架，直接通过 `useIconSelect` API 自定义渲染图标选择器。
+
+[查看自定义示例](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}
+
 ---
 
-> 示例源码位于项目的 `demo-element-plus/`、`demo-naive/`、`demo-antdv-next/`、`demo-tdesign/` 目录下。
+> 示例源码位于项目的 `demo-element-plus/`、`demo-naive/`、`demo-antdv-next/`、`demo-tdesign/`、`demo-custom/` 目录下。

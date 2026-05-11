@@ -34,6 +34,12 @@ Icon selector preset using TDesign component library.
 
 [Official Documentation](https://tdesign.tencent.com/vue-next/getting-started){target="_blank"}
 
+## Custom
+
+No UI framework dependency, using the `useIconSelect` API to build a custom icon selector.
+
+[View Custom Demo](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}
+
 ---
 
-> Demo source code is located in the `demo-element-plus/`, `demo-naive/`, `demo-antdv-next/`, `demo-tdesign/` directories of the project.
+> Demo source code is located in the `demo-element-plus/`, `demo-naive/`, `demo-antdv-next/`, `demo-tdesign/`, `demo-custom/` directories of the project.
