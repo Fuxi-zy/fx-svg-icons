@@ -18,11 +18,6 @@ declare module 'vue' {
       color?: string
       customClass?: string
     }>
-    FxIconSelect: FunctionalComponent<{
-      modelValue?: IconString | ''
-      placeholder?: string
-      height?: number
-    }>
   }
 }
 
