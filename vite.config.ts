@@ -27,7 +27,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: (id) => {
-        if (['vue', 'element-plus', '@element-plus/icons-vue', '@iconify/vue', 'naive-ui', 'antdv-next', '@antdv-next/icons', 'tdesign-vue-next', 'tdesign-icons-vue-next', 'vite'].includes(id)) return true
+        if (['vue', '@iconify/vue', 'vite'].includes(id)) return true
         if (id.startsWith('node:') || ['fs', 'path', 'module', 'url', 'os'].includes(id)) return true
         return false
       },

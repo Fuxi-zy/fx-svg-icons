@@ -12,30 +12,9 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(vue@3.5.33(typescript@6.0.3))
     devDependencies:
-      '@antdv-next/icons':
-        specifier: ^1.0.6
-        version: 1.0.6(vue@3.5.33(typescript@6.0.3))
-      '@element-plus/icons-vue':
-        specifier: ^2.3.2
-        version: 2.3.2(vue@3.5.33(typescript@6.0.3))
       '@vitejs/plugin-vue':
         specifier: ^6.0.6
         version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.7))(vue@3.5.33(typescript@6.0.3))
-      antdv-next:
-        specifier: ^1.2.2
-        version: 1.2.2(date-fns@4.1.0)(vue@3.5.33(typescript@6.0.3))
-      element-plus:
-        specifier: ^2.13.7
-        version: 2.13.7(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3))
-      naive-ui:
-        specifier: ^2.44.1
-        version: 2.44.1(vue@3.5.33(typescript@6.0.3))
-      tdesign-icons-vue-next:
-        specifier: ^0.4.4
-        version: 0.4.4(vue@3.5.33(typescript@6.0.3))
-      tdesign-vue-next:
-        specifier: ^1.19.1
-        version: 1.19.1(vue@3.5.33(typescript@6.0.3))
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -57,6 +36,9 @@ importers:
       '@fuxishi/svg-icon':
         specifier: workspace:*
         version: link:..
+      '@fuxishi/svg-icon-antdv-picker':
+        specifier: workspace:*
+        version: link:../pickers/antdv
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -94,6 +76,9 @@ importers:
       '@fuxishi/svg-icon':
         specifier: workspace:*
         version: link:..
+      '@fuxishi/svg-icon-element-plus-picker':
+        specifier: workspace:*
+        version: link:../pickers/element-plus
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -131,6 +116,9 @@ importers:
       '@fuxishi/svg-icon':
         specifier: workspace:*
         version: link:..
+      '@fuxishi/svg-icon-naive-picker':
+        specifier: workspace:*
+        version: link:../pickers/naive
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -168,6 +156,9 @@ importers:
       '@fuxishi/svg-icon':
         specifier: workspace:*
         version: link:..
+      '@fuxishi/svg-icon-tdesign-picker':
+        specifier: workspace:*
+        version: link:../pickers/tdesign
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -211,6 +202,102 @@ importers:
       vitepress:
         specifier: 2.0.0-alpha.17
         version: 2.0.0-alpha.17(@types/node@24.12.2)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.12)(sortablejs@1.15.7)(typescript@6.0.3)
+
+  pickers/antdv:
+    devDependencies:
+      '@fuxishi/svg-icon':
+        specifier: workspace:*
+        version: link:../..
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.6
+        version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.7))(vue@3.5.33(typescript@6.0.3))
+      antdv-next:
+        specifier: ^1.2.2
+        version: 1.2.2(date-fns@4.1.0)(vue@3.5.33(typescript@6.0.3))
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.10
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.7)
+      vue:
+        specifier: ^3.5.33
+        version: 3.5.33(typescript@6.0.3)
+      vue-tsc:
+        specifier: ^3.2.7
+        version: 3.2.7(typescript@6.0.3)
+
+  pickers/element-plus:
+    devDependencies:
+      '@fuxishi/svg-icon':
+        specifier: workspace:*
+        version: link:../..
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.6
+        version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.7))(vue@3.5.33(typescript@6.0.3))
+      element-plus:
+        specifier: ^2.13.7
+        version: 2.13.7(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3))
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.10
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.7)
+      vue:
+        specifier: ^3.5.33
+        version: 3.5.33(typescript@6.0.3)
+      vue-tsc:
+        specifier: ^3.2.7
+        version: 3.2.7(typescript@6.0.3)
+
+  pickers/naive:
+    devDependencies:
+      '@fuxishi/svg-icon':
+        specifier: workspace:*
+        version: link:../..
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.6
+        version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.7))(vue@3.5.33(typescript@6.0.3))
+      naive-ui:
+        specifier: ^2.44.1
+        version: 2.44.1(vue@3.5.33(typescript@6.0.3))
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.10
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.7)
+      vue:
+        specifier: ^3.5.33
+        version: 3.5.33(typescript@6.0.3)
+      vue-tsc:
+        specifier: ^3.2.7
+        version: 3.2.7(typescript@6.0.3)
+
+  pickers/tdesign:
+    devDependencies:
+      '@fuxishi/svg-icon':
+        specifier: workspace:*
+        version: link:../..
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.6
+        version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.7))(vue@3.5.33(typescript@6.0.3))
+      tdesign-vue-next:
+        specifier: ^1.19.1
+        version: 1.19.1(vue@3.5.33(typescript@6.0.3))
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.10
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.7)
+      vue:
+        specifier: ^3.5.33
+        version: 3.5.33(typescript@6.0.3)
+      vue-tsc:
+        specifier: ^3.2.7
+        version: 3.2.7(typescript@6.0.3)
 
 packages:
 

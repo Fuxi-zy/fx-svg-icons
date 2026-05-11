@@ -2,7 +2,6 @@
   <div class="fx-icon-select fx-icon-select--tdesign">
     <t-popup
       :visible="iconSelect.visible.value"
-      trigger="manual"
       placement="bottom-left"
       :show-arrow="false"
       :overlay-style="{ width: '400px', padding: '0' }"
@@ -92,11 +91,9 @@
 
 <script setup lang="ts">
 import { defineComponent, h } from 'vue'
-import searchSvgRaw from '../../assets/search.svg?raw'
-import arrowDownSvgRaw from '../../assets/arrow-down.svg?raw'
-import FxIcon from '../FxIcon.vue'
-import { useIconSelect } from '../../composables/useIconSelect'
-import type { FxIconSelectProps } from '../../types'
+import searchSvgRaw from './assets/search.svg?raw'
+import arrowDownSvgRaw from './assets/arrow-down.svg?raw'
+import { FxIcon, useIconSelect, type FxIconSelectProps } from '@fuxishi/svg-icon'
 
 const SearchIcon = defineComponent({
   name: 'SearchIcon',

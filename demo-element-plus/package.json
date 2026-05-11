@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fuxishi/svg-icon-element-plus-picker": "workspace:*",
     "@fuxishi/svg-icon": "workspace:*",
     "@iconify-json/ant-design": "^1.2.5",
     "@iconify-json/ep": "^1.2.4",

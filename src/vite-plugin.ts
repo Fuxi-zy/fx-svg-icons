@@ -585,10 +585,58 @@ declare module 'virtual:fx-svg-icon' {
   }
 
   /**
+   * 扫描已安装的 picker 包
+   */
+  function scanPickers(): { pkgName: string }[] {
+    const result: { pkgName: string }[] = []
+    const pickerPrefix = "@fuxishi/svg-icon-"
+
+    const searchDirs = [
+      join(config.root, "node_modules"),
+      join(config.root, "..", "node_modules"),
+    ]
+
+    for (const dir of searchDirs) {
+      if (!existsSync(dir)) continue
+      const entries = readdirSync(dir, { withFileTypes: true })
+      for (const entry of entries) {
+        const scopeDir = entry.isDirectory() || entry.isSymbolicLink() ? join(dir, entry.name) : null
+        if (!scopeDir || !existsSync(scopeDir)) continue
+        const subEntries = readdirSync(scopeDir, { withFileTypes: true })
+        for (const sub of subEntries) {
+          if (!sub.isDirectory() && !sub.isSymbolicLink()) continue
+          const pkgName = `${entry.name}/${sub.name}`
+          if (pkgName.startsWith(pickerPrefix) && pkgName.endsWith("-picker")) {
+            const pkgJsonPath = join(scopeDir, sub.name, "package.json")
+            if (existsSync(pkgJsonPath)) {
+              try {
+                const pkgJson = JSON.parse(readFileSync(pkgJsonPath, "utf-8"))
+                if (pkgJson.exports?.["."]) {
+                  result.push({ pkgName })
+                }
+              } catch { /* ignore */ }
+            }
+          }
+        }
+      }
+    }
+
+    if (result.length > 1) {
+      logger.warn(
+        `检测到多个 picker 包: ${result.map((p) => p.pkgName).join(", ")}，将使用第一个: ${result[0].pkgName}`,
+        { timestamp: true },
+      )
+    }
+
+    return result
+  }
+
+  /**
    * 生成虚拟模块代码（运行时初始化）
    */
   function generateVirtualModule(): string {
     const collections = scanCollections()
+    const pickers = scanPickers()
     const imports: string[] = []
     const collectionItems: string[] = []
 
@@ -605,13 +653,20 @@ declare module 'virtual:fx-svg-icon' {
   initSvgIcons(svgModules)`
       : ""
 
-    return `import { FxIcon, FxIconSelect, initIconifyIcons, initSvgIcons } from '@fuxishi/svg-icon'
-import '@fuxishi/svg-icon/dist/style.css'
+    const pickerImport = pickers.length > 0
+      ? `\nimport { FxIconSelect } from '${pickers[0].pkgName}'\nimport '${pickers[0].pkgName}/dist/style.css'`
+      : ""
+
+    const pickerRegister = pickers.length > 0
+      ? "\n  app.component('FxIconSelect', FxIconSelect)"
+      : ""
+
+    return `import { FxIcon, initIconifyIcons, initSvgIcons } from '@fuxishi/svg-icon'
+import '@fuxishi/svg-icon/dist/style.css'${pickerImport}
 ${imports.join("\n")}
 
 export function setupIcons(app) {
-  app.component('FxIcon', FxIcon)
-  app.component('FxIconSelect', FxIconSelect)
+  app.component('FxIcon', FxIcon)${pickerRegister}
   initIconifyIcons([${collectionItems.join(", ")}])${svgLoading}
 }
 `

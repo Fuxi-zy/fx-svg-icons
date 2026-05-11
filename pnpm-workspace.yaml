@@ -1,5 +1,6 @@
 packages:
   - '.'
+  - 'pickers/*'
   - 'demo-element-plus'
   - 'demo-naive'
   - 'demo-antdv-next'

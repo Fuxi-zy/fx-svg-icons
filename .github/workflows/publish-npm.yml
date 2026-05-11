@@ -25,7 +25,23 @@ jobs:
       - run: pnpm install
 
       - run: pnpm build
+      - run: pnpm --filter @fuxishi/svg-icon-element-plus-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-naive-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-antdv-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-tdesign-picker build
 
       - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+      - run: npm publish --access public -w @fuxishi/svg-icon-element-plus-picker
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+      - run: npm publish --access public -w @fuxishi/svg-icon-naive-picker
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+      - run: npm publish --access public -w @fuxishi/svg-icon-antdv-picker
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+      - run: npm publish --access public -w @fuxishi/svg-icon-tdesign-picker
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}

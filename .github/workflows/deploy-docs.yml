@@ -29,10 +29,15 @@ jobs:
       - run: pnpm install
 
       - run: pnpm build
-      - run: pnpm --filter demo build
+      - run: pnpm --filter @fuxishi/svg-icon-element-plus-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-naive-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-antdv-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-tdesign-picker build
+
+      - run: pnpm --filter demo-tdesign build
+      - run: pnpm --filter demo-element-plus build
       - run: pnpm --filter demo-naive build
       - run: pnpm --filter demo-antdv-next build
-      - run: pnpm --filter demo-tdesign build
 
       - run: pnpm --filter @fuxishi/svg-icon-docs build
 

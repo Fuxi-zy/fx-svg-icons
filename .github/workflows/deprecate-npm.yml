@@ -29,9 +29,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
         run: |
+          PACKAGES=(
+            "@fuxishi/svg-icon"
+            "@fuxishi/svg-icon-element-plus-picker"
+            "@fuxishi/svg-icon-naive-picker"
+            "@fuxishi/svg-icon-antdv-picker"
+            "@fuxishi/svg-icon-tdesign-picker"
+          )
           IFS=',' read -ra VERSIONS <<< "${{ inputs.versions }}"
-          for v in "${VERSIONS[@]}"; do
-            v=$(echo "$v" | xargs)
-            echo "废弃 @fuxishi/svg-icon@$v ..."
-            npm deprecate "@fuxishi/svg-icon@$v" "${{ inputs.message }}" --registry=https://registry.npmjs.org/
+          for pkg in "${PACKAGES[@]}"; do
+            for v in "${VERSIONS[@]}"; do
+              v=$(echo "$v" | xargs)
+              echo "废弃 ${pkg}@${v} ..."
+              npm deprecate "${pkg}@${v}" "${{ inputs.message }}" --registry=https://registry.npmjs.org/ || true
+            done
           done

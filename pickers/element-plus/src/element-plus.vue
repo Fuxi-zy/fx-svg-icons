@@ -1,17 +1,16 @@
 <template>
-  <div class="fx-icon-select fx-icon-select--naive">
-    <n-popover
-      :show="iconSelect.visible.value"
-      trigger="manual"
+  <div class="fx-icon-select">
+    <el-popover
+      v-model:visible="iconSelect.visible.value"
       placement="bottom-start"
-      :show-arrow="false"
-      :style="{ width: '400px', padding: '0' }"
-      :content-style="{ padding: '0', overflow: 'hidden' }"
-      @update:show="(val: boolean) => { if (!val) iconSelect.closePopover() }"
+      :width="400"
+      trigger="manual"
+      popper-class="fx-icon-select-popover"
+      :popper-style="{ height: `${iconSelect.contentHeight.value}px` }"
     >
-      <template #trigger>
-        <n-input
-          :value="iconSelect.inputValue.value"
+      <template #reference>
+        <el-input
+          :model-value="iconSelect.inputValue.value"
           :placeholder="iconSelect.placeholder"
           readonly
           @click="iconSelect.handleInputClick"
@@ -21,35 +20,27 @@
             <span v-else class="icon-placeholder">图标</span>
           </template>
           <template #suffix>
-            <span class="arrow-icon" :class="{ 'is-reverse': iconSelect.visible.value }">
-              <n-icon :size="14" :component="ArrowDownIcon" />
-            </span>
+            <el-icon class="arrow-icon" :class="{ 'is-reverse': iconSelect.visible.value }">
+              <ArrowDown />
+            </el-icon>
           </template>
-        </n-input>
+        </el-input>
       </template>
 
       <div class="icon-select-content" :style="{ height: `${iconSelect.contentHeight.value}px` }" @click.stop>
-        <n-tabs
-          :value="iconSelect.activeTab.value"
-          type="line"
-          size="small"
-          :tabs-padding="12"
-          @update:value="(val: string | number) => { iconSelect.activeTab.value = String(val) }"
-        >
-          <n-tab-pane v-for="tab in iconSelect.tabs.value" :key="tab.key" :name="tab.key" :tab="tab.label">
+        <el-tabs v-model="iconSelect.activeTab.value" class="icon-tabs" @click.stop>
+          <el-tab-pane v-for="tab in iconSelect.tabs.value" :key="tab.key" :label="tab.label" :name="tab.key">
             <div class="tab-content" :style="{ height: `${iconSelect.tabContentHeight.value}px` }">
-              <n-input
-                :value="iconSelect.searchTexts.value[tab.key]"
+              <el-input
+                v-model="iconSelect.searchTexts.value[tab.key]"
                 :placeholder="`搜索${tab.label}图标`"
                 clearable
-                size="small"
                 class="search-input"
-                @update:value="(val: string) => { iconSelect.searchTexts.value[tab.key] = val }"
               >
                 <template #prefix>
-                  <n-icon :size="14" :component="SearchIcon" />
+                  <el-icon><Search /></el-icon>
                 </template>
-              </n-input>
+              </el-input>
               <div
                 :ref="(el: any) => iconSelect.setListRef(tab.key, el as HTMLElement | null)"
                 class="icon-list"
@@ -66,45 +57,44 @@
                   <FxIcon :name="`${tab.key}:${icon}`" :size="20" />
                   <span class="icon-name">{{ icon }}</span>
                 </div>
-                <n-empty v-if="iconSelect.getFilteredIcons(tab.key).length === 0" description="未找到图标" size="small" />
+                <el-empty v-if="iconSelect.getFilteredIcons(tab.key).length === 0" :image-size="80" description="未找到图标" />
               </div>
               <div v-if="iconSelect.getFilteredIcons(tab.key).length > 0" class="icon-pagination">
                 <span class="pagination-total">共 {{ iconSelect.getFilteredIcons(tab.key).length }} 个图标</span>
-                <n-pagination
-                  :page="iconSelect.currentPages.value[tab.key] || 1"
+                <el-pagination
+                  v-model:current-page="iconSelect.currentPages.value[tab.key]"
                   :page-size="iconSelect.pageSize"
-                  :item-count="iconSelect.getFilteredIcons(tab.key).length"
-                  :page-slot="5"
+                  :total="iconSelect.getFilteredIcons(tab.key).length"
+                  :pager-count="5"
                   size="small"
+                  layout="prev, pager, next"
                   class="pagination-controls"
-                  @update:page="(val: number) => { iconSelect.currentPages.value[tab.key] = val }"
+                  @click.stop
                 />
               </div>
             </div>
-          </n-tab-pane>
-        </n-tabs>
+          </el-tab-pane>
+        </el-tabs>
       </div>
-    </n-popover>
+    </el-popover>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineComponent, h } from 'vue'
-import searchSvgRaw from '../../assets/search.svg?raw'
-import arrowDownSvgRaw from '../../assets/arrow-down.svg?raw'
-import FxIcon from '../FxIcon.vue'
-import { useIconSelect } from '../../composables/useIconSelect'
-import type { FxIconSelectProps } from '../../types'
+import searchSvgRaw from './assets/search.svg?raw'
+import arrowDownSvgRaw from './assets/arrow-down.svg?raw'
+import { FxIcon, useIconSelect, type FxIconSelectProps } from '@fuxishi/svg-icon'
 
-const SearchIcon = defineComponent({
-  name: 'SearchIcon',
+const Search = defineComponent({
+  name: 'Search',
   render() {
     return h('span', { innerHTML: searchSvgRaw })
   }
 })
 
-const ArrowDownIcon = defineComponent({
-  name: 'ArrowDownIcon',
+const ArrowDown = defineComponent({
+  name: 'ArrowDown',
   render() {
     return h('span', { innerHTML: arrowDownSvgRaw })
   }
@@ -128,21 +118,18 @@ const iconSelect = useIconSelect({
 </script>
 
 <style scoped>
-.fx-icon-select--naive {
+.fx-icon-select {
   width: 100%;
 }
 
 .icon-placeholder {
-  color: #c2c2c2;
+  color: #c0c4cc;
   font-size: 14px;
 }
 
 .arrow-icon {
   transition: transform 0.3s;
   cursor: pointer;
-  color: #c2c2c2;
-  display: inline-flex;
-  align-items: center;
 }
 
 .arrow-icon.is-reverse {
@@ -156,6 +143,34 @@ const iconSelect = useIconSelect({
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+.icon-tabs {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.icon-tabs :deep(.el-tabs__header) {
+  margin: 0;
+  padding: 0 12px;
+  flex-shrink: 0;
+}
+
+.icon-tabs :deep(.el-tabs__content) {
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.icon-tabs :deep(.el-tabs__body),
+.icon-tabs :deep(.el-tabs__panel),
+.icon-tabs :deep(.el-tab-pane) {
+  height: 100%;
+  overflow: hidden;
 }
 
 .tab-content {
@@ -194,12 +209,12 @@ const iconSelect = useIconSelect({
 }
 
 .icon-list::-webkit-scrollbar-thumb {
-  background: #c2c2c2;
+  background: #c0c4cc;
   border-radius: 3px;
 }
 
 .icon-list::-webkit-scrollbar-thumb:hover {
-  background: #a0a0a0;
+  background: #a0a4a8;
 }
 
 .icon-item {
@@ -210,8 +225,8 @@ const iconSelect = useIconSelect({
   width: 100%;
   height: 80px;
   padding: 12px 8px;
-  border: 1px solid #e0e0e6;
-  border-radius: 3px;
+  border: 1px solid #e4e7ed;
+  border-radius: 4px;
   cursor: pointer;
   background: #fff;
   box-sizing: border-box;
@@ -219,14 +234,14 @@ const iconSelect = useIconSelect({
 }
 
 .icon-item:hover {
-  border-color: var(--n-primary-color, #18a058);
-  background: #e8f5e9;
-  color: var(--n-primary-color, #18a058);
+  border-color: var(--el-color-primary);
+  background: var(--el-color-primary-light-9, #ecf5ff);
+  color: var(--el-color-primary);
 }
 
 .icon-item.active {
-  border-color: var(--n-primary-color, #18a058);
-  background: var(--n-primary-color, #18a058);
+  border-color: var(--el-color-primary);
+  background: var(--el-color-primary);
   color: #fff;
 }
 
@@ -260,16 +275,29 @@ const iconSelect = useIconSelect({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #efeff5;
+  border-top: 1px solid var(--el-border-color-lighter);
 }
 
 .pagination-total {
   font-size: 12px;
-  color: rgba(0, 0, 0, 0.45);
+  color: var(--el-text-color-regular);
   flex-shrink: 0;
 }
 
 .pagination-controls {
   flex-shrink: 0;
+}
+</style>
+
+<style>
+.el-popper.fx-icon-select-popover {
+  padding: 0 !important;
+  overflow: hidden !important;
+  max-height: none !important;
+  box-sizing: border-box !important;
+}
+
+.el-popper.fx-icon-select-popover .el-popper__arrow {
+  display: none;
 }
 </style>
