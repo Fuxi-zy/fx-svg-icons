@@ -30,6 +30,7 @@ const iconStyle = computed(() => {
 
   if (props.color) {
     style.color = props.color
+    style.fill = 'currentColor'
   }
 
   return style
