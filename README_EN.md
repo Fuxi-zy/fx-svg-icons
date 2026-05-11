@@ -6,7 +6,7 @@ Vue 3 icon component library with Iconify icon set support, local SVG, multi-UI 
 
 - **Iconify Icon Sets** — Supports all `@iconify-json` packages, load massive icon resources with one click
 - **Local SVG** — Auto-load local SVG files via `import.meta.glob`, supports multi-level directories
-- **Multi-UI Framework Presets** — Built-in Element Plus, Naive UI, AntDv Next, TDesign icon selector presets
+- **Multi-UI Framework Presets** — Split into independent picker packages, supports Element Plus, Naive UI, AntDv Next, TDesign
 - **Vite Plugin** — Auto-generate TypeScript type declarations precise to each icon name, full IDE intellisense
 - **Icon Selector** — Headless composable + multi-framework presets, search, pagination, custom tabs
 - **TypeScript** — Complete type definitions, generic inference for precise icon names, global component type augmentation
@@ -45,7 +45,40 @@ export default defineConfig({
 })
 ```
 
-### 2. Initialize
+### 2. Install Icon Selector Preset (Optional)
+
+Install the picker package for your UI framework:
+
+::: code-group
+
+```bash [Element Plus]
+pnpm add @fuxishi/svg-icon-element-plus-picker
+```
+
+```bash [Naive UI]
+pnpm add @fuxishi/svg-icon-naive-picker
+```
+
+```bash [AntDv Next]
+pnpm add @fuxishi/svg-icon-antdv-picker
+```
+
+```bash [TDesign]
+pnpm add @fuxishi/svg-icon-tdesign-picker
+```
+
+:::
+
+| UI Framework | Picker Package |
+|--------------|----------------|
+| Element Plus | `@fuxishi/svg-icon-element-plus-picker` |
+| Naive UI | `@fuxishi/svg-icon-naive-picker` |
+| AntDv Next | `@fuxishi/svg-icon-antdv-picker` |
+| TDesign | `@fuxishi/svg-icon-tdesign-picker` |
+
+You can also skip installing any picker package and use the `useIconSelect` API to build a fully custom icon selector.
+
+### 3. Initialize
 
 ```ts
 // main.ts
@@ -56,9 +89,9 @@ setupIcons(app) // Auto register components + load icon data + load local SVG
 app.mount('#app')
 ```
 
-`setupIcons` handles everything in one line: registers `FxIcon` / `FxIconSelect` as global components, loads all installed `@iconify-json/*` icon data, and loads local SVG icons via `import.meta.glob`.
+`setupIcons` handles everything in one line: registers `FxIcon` as a global component, auto-detects installed picker packages and registers `FxIconSelect`, loads all installed `@iconify-json/*` icon data, and loads local SVG icons via `import.meta.glob`.
 
-### 3. Using Icons
+### 4. Using Icons
 
 ```vue
 <template>
@@ -71,7 +104,7 @@ app.mount('#app')
 </template>
 ```
 
-### 4. Using Icon Selector
+### 5. Using Icon Selector
 
 ```vue
 <template>
@@ -83,8 +116,6 @@ import { ref } from 'vue'
 const selectedIcon = ref('')
 </script>
 ```
-
-The icon selector automatically detects the current UI framework (Element Plus / Naive UI / AntDv Next / TDesign) and matches the corresponding component preset.
 
 ## Documentation
 
