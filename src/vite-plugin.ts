@@ -416,9 +416,9 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
     }
 
     if (splitDts) {
-      generateSplitDts(dtsDir, collectionIcons, totalCount, relativePath)
+      generateSplitDts(dtsDir, collectionIcons, totalCount, relativePath, scanPickers().length > 0)
     } else {
-      generateSingleDts(collectionIcons, totalCount, relativePath)
+      generateSingleDts(collectionIcons, totalCount, relativePath, scanPickers().length > 0)
     }
   }
 
@@ -429,11 +429,19 @@ export function fxDtsPlugin(options?: FxSvgTypesOptions): Plugin {
     collectionIcons: Map<string, string[]>,
     totalCount: number,
     relativePath: string,
+    hasPicker: boolean,
   ) {
     const iconTypes: string[] = ["`svg:${string}`"]
     for (const icons of collectionIcons.values()) {
       iconTypes.push(...icons)
     }
+
+    const fxIconSelectDecl = hasPicker ? `
+    FxIconSelect: FunctionalComponent<{
+      modelValue?: IconString | ''
+      placeholder?: string
+      height?: number
+    }>` : ""
 
     const content = `// 由 @fuxishi/svg-icon/vite 自动生成，请勿手动修改
 // 图标总数: ${totalCount}
@@ -450,12 +458,7 @@ declare module 'vue' {
       size?: string | number
       color?: string
       customClass?: string
-    }>
-    FxIconSelect: FunctionalComponent<{
-      modelValue?: IconString | ''
-      placeholder?: string
-      height?: number
-    }>
+    }>${fxIconSelectDecl}
   }
 }
 
@@ -486,6 +489,7 @@ declare module 'virtual:fx-svg-icon' {
     collectionIcons: Map<string, string[]>,
     totalCount: number,
     relativePath: string,
+    hasPicker: boolean,
   ) {
     if (!existsSync(dtsDir)) mkdirSync(dtsDir, { recursive: true })
     const expectedFiles = new Set<string>()
@@ -542,6 +546,13 @@ export type IconString${pascalName} =
       ),
     ]
 
+    const fxIconSelectDecl = hasPicker ? `
+    FxIconSelect: FunctionalComponent<{
+      modelValue?: IconString | ''
+      placeholder?: string
+      height?: number
+    }>` : ""
+
     const content = `// 由 @fuxishi/svg-icon/vite 自动生成，请勿手动修改
 // 图标总数: ${totalCount}
 
@@ -558,12 +569,7 @@ declare module 'vue' {
       size?: string | number
       color?: string
       customClass?: string
-    }>
-    FxIconSelect: FunctionalComponent<{
-      modelValue?: IconString | ''
-      placeholder?: string
-      height?: number
-    }>
+    }>${fxIconSelectDecl}
   }
 }
 
