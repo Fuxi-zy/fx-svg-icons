@@ -5,4 +5,5 @@ packages:
   - 'demo-naive'
   - 'demo-antdv-next'
   - 'demo-tdesign'
+  - 'demo-custom'
   - 'fx-svg-icons-docs'

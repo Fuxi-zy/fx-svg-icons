@@ -1,5 +1,5 @@
 {
-  "name": "demo-element-plus",
+  "name": "demo-custom",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,11 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fuxishi/svg-icon-element-plus-picker": "workspace:*",
     "@fuxishi/svg-icon": "workspace:*",
     "@iconify-json/ant-design": "^1.2.5",
     "@iconify-json/ep": "^1.2.4",
-    "element-plus": "^2.13.7",
     "vue": "^3.5.33"
   },
   "devDependencies": {
