@@ -2,7 +2,54 @@
 
 图标选择器组件，提供搜索、分页、多 Tab 切换的图标选择功能。
 
-## 基本用法
+## v1.0.7+（推荐）
+
+从 v1.0.7 开始，UI 预设拆分为独立的 picker 包，Vite 插件会自动检测已安装的 picker 包并注册 `FxIconSelect` 组件。
+
+### 安装 picker 包
+
+根据你的 UI 框架安装对应的 picker 包：
+
+::: code-group
+
+```bash [Element Plus]
+pnpm add @fuxishi/svg-icon-element-plus-picker
+```
+
+```bash [Naive UI]
+pnpm add @fuxishi/svg-icon-naive-picker
+```
+
+```bash [AntDv Next]
+pnpm add @fuxishi/svg-icon-antdv-picker
+```
+
+```bash [TDesign]
+pnpm add @fuxishi/svg-icon-tdesign-picker
+```
+
+:::
+
+| UI 框架 | Picker 包 | 依赖 |
+|---------|-----------|------|
+| Element Plus | `@fuxishi/svg-icon-element-plus-picker` | `element-plus` |
+| Naive UI | `@fuxishi/svg-icon-naive-picker` | `naive-ui` |
+| AntDv Next | `@fuxishi/svg-icon-antdv-picker` | `antdv-next` |
+| TDesign | `@fuxishi/svg-icon-tdesign-picker` | `tdesign-vue-next` |
+
+### 使用
+
+安装 picker 包后，`setupIcons(app)` 会自动注册 `FxIconSelect` 组件，无需手动配置：
+
+```ts
+// main.ts
+import { setupIcons } from 'virtual:fx-svg-icon'
+
+const app = createApp(App)
+setupIcons(app) // 自动注册 FxIcon + 检测 picker 包并注册 FxIconSelect
+```
+
+在模板中直接使用：
 
 ```vue
 <template>
@@ -15,18 +62,22 @@ const iconName = ref('')
 </script>
 ```
 
-## 自动预设检测
+## v1.0.6 及之前
 
-安装对应的 UI 框架 picker 包后，Vite 插件会自动检测并注册对应预设的选择器组件：
+::: warning
+以下用法适用于 v1.0.6 及之前版本。v1.0.7+ 请使用上方的 picker 包方式。
+:::
 
-| UI 框架 | 安装包 | 预设组件 |
-|---------|--------|----------|
-| Element Plus | `@fuxishi/svg-icon-element-plus-picker` | Element Plus 风格的选择器 |
-| Naive UI | `@fuxishi/svg-icon-naive-picker` | Naive UI 风格的选择器 |
-| AntDv Next | `@fuxishi/svg-icon-antdv-picker` | AntDv Next 风格的选择器 |
-| TDesign | `@fuxishi/svg-icon-tdesign-picker` | TDesign 风格的选择器 |
+v1.0.6 及之前版本内置了 UI 框架预设，`FxIconSelect` 会自动检测已安装的 UI 框架：
 
-安装 picker 包后，`setupIcons(app)` 会自动注册 `FxIconSelect` 组件，无需手动配置。
+| UI 框架 | 检测方式 | 预设组件 |
+|---------|----------|----------|
+| Element Plus | 检测 `ElPopover` 全局组件 | Element Plus 风格的选择器 |
+| Naive UI | 检测 `NPopover` 全局组件 | Naive UI 风格的选择器 |
+| AntDv Next | 检测 `APopover` 全局组件 | AntDv Next 风格的选择器 |
+| TDesign | 检测 `TPopup` 全局组件 | TDesign 风格的选择器 |
+
+安装 UI 框架后，选择器会自动使用对应的预设，无需额外配置。
 
 ## Props
 
@@ -48,12 +99,29 @@ const iconName = ref('')
 
 ```vue
 <template>
-  <FxIconSelect v-model="iconName">
-    <template #default="{ visible, tabs, handleInputClick, handleSelectIcon }">
+  <div>
+    <input
+      :value="iconSelect.inputValue.value"
+      :placeholder="iconSelect.placeholder"
+      readonly
+      @click="iconSelect.handleInputClick"
+    />
+    <div v-if="iconSelect.visible.value">
       <!-- 自定义选择器 UI -->
-    </template>
-  </FxIconSelect>
+    </div>
+  </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import { useIconSelect } from '@fuxishi/svg-icon'
+
+const iconName = ref('')
+const iconSelect = useIconSelect({
+  modelValue: () => iconName.value,
+  onSelect: (value) => { iconName.value = value }
+})
+</script>
 ```
 
 详见 [useIconSelect](/composables/use-icon-select)。

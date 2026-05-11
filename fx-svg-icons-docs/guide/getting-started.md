@@ -59,6 +59,49 @@ app.mount('#app')
 
 ## 使用图标选择器
 
+### v1.0.7+（推荐）
+
+安装对应的 UI 框架 picker 包：
+
+::: code-group
+
+```bash [Element Plus]
+pnpm add @fuxishi/svg-icon-element-plus-picker
+```
+
+```bash [Naive UI]
+pnpm add @fuxishi/svg-icon-naive-picker
+```
+
+```bash [AntDv Next]
+pnpm add @fuxishi/svg-icon-antdv-picker
+```
+
+```bash [TDesign]
+pnpm add @fuxishi/svg-icon-tdesign-picker
+```
+
+:::
+
+安装后 `setupIcons(app)` 会自动检测并注册 `FxIconSelect`，直接在模板中使用即可：
+
+```vue
+<template>
+  <FxIconSelect v-model="selectedIcon" placeholder="请选择图标" />
+</template>
+
+<script setup>
+import { ref } from 'vue'
+const selectedIcon = ref('')
+</script>
+```
+
+### v1.0.6 及之前
+
+::: warning
+v1.0.6 及之前版本内置了 UI 框架预设，无需安装 picker 包。
+:::
+
 ```vue
 <template>
   <FxIconSelect

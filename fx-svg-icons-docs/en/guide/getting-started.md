@@ -59,6 +59,49 @@ app.mount('#app')
 
 ## Use Icon Selector
 
+### v1.0.7+ (Recommended)
+
+Install the picker package for your UI framework:
+
+::: code-group
+
+```bash [Element Plus]
+pnpm add @fuxishi/svg-icon-element-plus-picker
+```
+
+```bash [Naive UI]
+pnpm add @fuxishi/svg-icon-naive-picker
+```
+
+```bash [AntDv Next]
+pnpm add @fuxishi/svg-icon-antdv-picker
+```
+
+```bash [TDesign]
+pnpm add @fuxishi/svg-icon-tdesign-picker
+```
+
+:::
+
+After installation, `setupIcons(app)` will automatically detect and register `FxIconSelect`. Use directly in templates:
+
+```vue
+<template>
+  <FxIconSelect v-model="selectedIcon" placeholder="Select an icon" />
+</template>
+
+<script setup>
+import { ref } from 'vue'
+const selectedIcon = ref('')
+</script>
+```
+
+### v1.0.6 and Earlier
+
+::: warning
+v1.0.6 and earlier versions have built-in UI framework presets. No picker package installation needed.
+:::
+
 ```vue
 <template>
   <FxIconSelect
