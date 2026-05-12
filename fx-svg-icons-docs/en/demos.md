@@ -40,6 +40,12 @@ No UI framework dependency, using the `useIconSelect` API to build a custom icon
 
 [View Custom Demo](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}
 
+## Vanilla
+
+No UI framework dependency, using the built-in `@fuxishi/svg-icon-picker` package for an out-of-the-box selector component with CSS variable theming support.
+
+[View Vanilla Demo](https://fuxi-zy.github.io/fx-svg-icons/demos/vanilla/){target="_blank"}
+
 ---
 
 > Demo source code is located in the `demos/` directory of the project.

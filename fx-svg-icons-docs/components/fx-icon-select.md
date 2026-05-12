@@ -28,6 +28,10 @@ pnpm add @fuxishi/svg-icon-antdv-picker
 pnpm add @fuxishi/svg-icon-tdesign-picker
 ```
 
+```bash [Vanilla（无 UI 框架）]
+pnpm add @fuxishi/svg-icon-picker
+```
+
 :::
 
 | UI 框架 | Picker 包 | 依赖 |
@@ -36,6 +40,7 @@ pnpm add @fuxishi/svg-icon-tdesign-picker
 | Naive UI | `@fuxishi/svg-icon-naive-picker` | `naive-ui` |
 | AntDv Next | `@fuxishi/svg-icon-antdv-picker` | `antdv-next` |
 | TDesign | `@fuxishi/svg-icon-tdesign-picker` | `tdesign-vue-next` |
+| 无 UI 框架 | `@fuxishi/svg-icon-picker` | 无 |
 
 ### 使用
 
@@ -150,3 +155,49 @@ const iconSelect = useIconSelect({
   />
 </template>
 ```
+
+## CSS 变量
+
+`@fuxishi/svg-icon-picker`（Vanilla 版本）支持通过 CSS 变量自定义主题。只需在组件外层覆盖对应的 CSS 变量即可：
+
+```css
+/* 全局覆盖 */
+:root {
+  --fx-primary: #1677ff;
+  --fx-border-radius: 8px;
+}
+
+/* 或针对单个选择器覆盖 */
+.my-picker {
+  --fx-primary: #1677ff;
+}
+```
+
+```vue
+<template>
+  <div class="my-picker">
+    <FxIconSelect v-model="iconName" />
+  </div>
+</template>
+```
+
+### 可用变量
+
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `--fx-primary` | `#409eff` | 主题色（选中、hover、激活状态） |
+| `--fx-primary-light` | `#ecf5ff` | 主题色浅色（图标项 hover 背景） |
+| `--fx-color-text-primary` | `#303133` | 主文本色 |
+| `--fx-color-text-regular` | `#606266` | 常规文本色 |
+| `--fx-color-text-secondary` | `#909399` | 次要文本色（图标名称、提示文字） |
+| `--fx-color-text-placeholder` | `#c0c4cc` | 占位符 / 禁用文本色 |
+| `--fx-color-bg` | `#fff` | 背景色 |
+| `--fx-color-bg-hover` | `#f0f2f5` | 清除按钮 hover 背景色 |
+| `--fx-border-color` | `#dcdfe6` | 边框色 |
+| `--fx-border-color-light` | `#e4e7ed` | 浅边框色（分隔线、图标项边框） |
+| `--fx-border-radius` | `4px` | 基础圆角 |
+| `--fx-border-radius-lg` | `6px` | 大圆角（输入框、弹窗） |
+| `--fx-font-size-sm` | `12px` | 小字号 |
+| `--fx-font-size-base` | `13px` | 基础字号 |
+| `--fx-font-size-md` | `14px` | 中字号（输入框、标签页） |
+| `--fx-transition` | `0.2s` | 过渡动画时长 |

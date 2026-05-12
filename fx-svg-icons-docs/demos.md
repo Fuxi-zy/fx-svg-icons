@@ -40,6 +40,12 @@
 
 [查看自定义示例](https://fuxi-zy.github.io/fx-svg-icons/demos/custom/){target="_blank"}
 
+## Vanilla
+
+不依赖任何 UI 框架，使用内置的 `@fuxishi/svg-icon-picker` 包提供开箱即用的选择器组件，支持通过 CSS 变量自定义主题。
+
+[查看 Vanilla 示例](https://fuxi-zy.github.io/fx-svg-icons/demos/vanilla/){target="_blank"}
+
 ---
 
 > 示例源码位于项目的 `demos/` 目录下。
