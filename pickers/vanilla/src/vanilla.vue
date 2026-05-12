@@ -7,7 +7,7 @@
       </span>
       <span v-if="modelValue" class="fx-icon-select-value">{{ modelValue }}</span>
       <span v-else class="fx-icon-select-placeholder">{{ iconSelect.placeholder }}</span>
-      <span class="fx-icon-select-arrow" :class="{ 'is-reverse': iconSelect.visible.value }">&#9660;</span>
+      <span class="fx-icon-select-arrow" :class="{ 'is-reverse': iconSelect.visible.value }" v-html="arrowDownSvgRaw"></span>
     </div>
 
     <div
@@ -261,12 +261,21 @@ const popupStyle = computed(() => {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 12px;
-  color: #c0c4cc;
   cursor: pointer;
   transition: transform 0.3s;
   user-select: none;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  color: #c0c4cc;
+}
+
+.fx-icon-select-arrow :deep(svg) {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 .fx-icon-select-arrow.is-reverse {

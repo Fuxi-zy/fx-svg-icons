@@ -228,6 +228,43 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7(typescript@6.0.3)
 
+  demos/demo-vanilla:
+    dependencies:
+      '@fuxishi/svg-icon':
+        specifier: workspace:*
+        version: link:../..
+      '@fuxishi/svg-icon-picker':
+        specifier: workspace:*
+        version: link:../../pickers/vanilla
+      '@iconify-json/ant-design':
+        specifier: ^1.2.5
+        version: 1.2.5
+      '@iconify-json/ep':
+        specifier: ^1.2.4
+        version: 1.2.4
+      vue:
+        specifier: ^3.5.33
+        version: 3.5.33(typescript@6.0.3)
+    devDependencies:
+      '@types/node':
+        specifier: ^24.12.2
+        version: 24.12.2
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.6
+        version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.7))(vue@3.5.33(typescript@6.0.3))
+      '@vue/tsconfig':
+        specifier: ^0.9.1
+        version: 0.9.1(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3))
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.10
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.7)
+      vue-tsc:
+        specifier: ^3.2.7
+        version: 3.2.7(typescript@6.0.3)
+
   fx-svg-icons-docs:
     devDependencies:
       '@fuxishi/vitepress-theme':
@@ -320,6 +357,27 @@ importers:
       tdesign-vue-next:
         specifier: ^1.19.1
         version: 1.19.1(vue@3.5.33(typescript@6.0.3))
+      typescript:
+        specifier: ~6.0.3
+        version: 6.0.3
+      vite:
+        specifier: ^8.0.10
+        version: 8.0.10(@types/node@24.12.2)(esbuild@0.27.7)
+      vue:
+        specifier: ^3.5.33
+        version: 3.5.33(typescript@6.0.3)
+      vue-tsc:
+        specifier: ^3.2.7
+        version: 3.2.7(typescript@6.0.3)
+
+  pickers/vanilla:
+    devDependencies:
+      '@fuxishi/svg-icon':
+        specifier: workspace:*
+        version: link:../..
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.6
+        version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(esbuild@0.27.7))(vue@3.5.33(typescript@6.0.3))
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
