@@ -28,17 +28,17 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7(typescript@6.0.3)
 
-  demo-antdv-next:
+  demos/demo-antdv-next:
     dependencies:
       '@antdv-next/icons':
         specifier: ^1.0.6
         version: 1.0.6(vue@3.5.33(typescript@6.0.3))
       '@fuxishi/svg-icon':
         specifier: workspace:*
-        version: link:..
+        version: link:../..
       '@fuxishi/svg-icon-antdv-picker':
         specifier: workspace:*
-        version: link:../pickers/antdv
+        version: link:../../pickers/antdv
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -71,11 +71,11 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7(typescript@6.0.3)
 
-  demo-custom:
+  demos/demo-custom:
     dependencies:
       '@fuxishi/svg-icon':
         specifier: workspace:*
-        version: link:..
+        version: link:../..
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -105,14 +105,14 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7(typescript@6.0.3)
 
-  demo-element-plus:
+  demos/demo-element-plus:
     dependencies:
       '@fuxishi/svg-icon':
         specifier: workspace:*
-        version: link:..
+        version: link:../..
       '@fuxishi/svg-icon-element-plus-picker':
         specifier: workspace:*
-        version: link:../pickers/element-plus
+        version: link:../../pickers/element-plus
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -145,14 +145,14 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7(typescript@6.0.3)
 
-  demo-naive:
+  demos/demo-naive:
     dependencies:
       '@fuxishi/svg-icon':
         specifier: workspace:*
-        version: link:..
+        version: link:../..
       '@fuxishi/svg-icon-naive-picker':
         specifier: workspace:*
-        version: link:../pickers/naive
+        version: link:../../pickers/naive
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -185,14 +185,14 @@ importers:
         specifier: ^3.2.7
         version: 3.2.7(typescript@6.0.3)
 
-  demo-tdesign:
+  demos/demo-tdesign:
     dependencies:
       '@fuxishi/svg-icon':
         specifier: workspace:*
-        version: link:..
+        version: link:../..
       '@fuxishi/svg-icon-tdesign-picker':
         specifier: workspace:*
-        version: link:../pickers/tdesign
+        version: link:../../pickers/tdesign
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
