@@ -68,7 +68,7 @@
               class="pagination-btn pagination-arrow"
               :disabled="getCurrentPage() <= 1"
               @click="iconSelect.currentPages.value[iconSelect.activeTab.value] = getCurrentPage() - 1"
-            ><span v-html="arrowLeftSvg"></span></button>
+            ><span v-html="arrowLeftSvgRaw"></span></button>
 
             <template v-for="(p, idx) in getVisiblePages()" :key="p">
               <span
@@ -78,7 +78,7 @@
                 @mouseleave="hoveredEllipsis = null"
                 @click="jumpPrev"
               >
-                <span v-if="hoveredEllipsis === 'prev'" v-html="arrowLeftSvg"></span>
+                <span v-if="hoveredEllipsis === 'prev'" v-html="arrowLeftSvgRaw"></span>
                 <template v-else>&#8226;&#8226;&#8226;</template>
               </span>
               <button
@@ -93,7 +93,7 @@
                 @mouseleave="hoveredEllipsis = null"
                 @click="jumpNext"
               >
-                <span v-if="hoveredEllipsis === 'next'" v-html="arrowRightSvg"></span>
+                <span v-if="hoveredEllipsis === 'next'" v-html="arrowRightSvgRaw"></span>
                 <template v-else>&#8226;&#8226;&#8226;</template>
               </span>
             </template>
@@ -102,7 +102,7 @@
               class="pagination-btn pagination-arrow"
               :disabled="getCurrentPage() >= getTotalPages()"
               @click="iconSelect.currentPages.value[iconSelect.activeTab.value] = getCurrentPage() + 1"
-            ><span v-html="arrowRightSvg"></span></button>
+            ><span v-html="arrowRightSvgRaw"></span></button>
           </div>
         </div>
       </div>
@@ -114,10 +114,9 @@
 import { ref, computed } from 'vue'
 import searchSvgRaw from './assets/search.svg?raw'
 import arrowDownSvgRaw from './assets/arrow-down.svg?raw'
+import arrowLeftSvgRaw from './assets/arrow-left.svg?raw'
+import arrowRightSvgRaw from './assets/arrow-right.svg?raw'
 import { FxIcon, useIconSelect, type FxIconSelectProps } from '@fuxishi/svg-icon'
-
-const arrowLeftSvg = '<svg viewBox="0 0 1024 1024" width="12" height="12"><path d="M658.133333 155.733333L334.933333 477.866667c-12.8 12.8-12.8 34.133333 0 46.933333l323.2 322.133333c12.8 12.8 34.133333 12.8 46.933334 0s12.8-34.133333 0-46.933333L405.333333 512l299.733334-288c12.8-12.8 12.8-34.133333 0-46.933333s-34.133333-12.8-46.933334-1.066667z"/></svg>'
-const arrowRightSvg = '<svg viewBox="0 0 1024 1024" width="12" height="12"><path d="M365.866667 155.733333L689.066667 477.866667c12.8 12.8 12.8 34.133333 0 46.933333L365.866667 846.933333c-12.8 12.8-34.133333 12.8-46.933334 0s-12.8-34.133333 0-46.933333L618.666667 512 318.933333 224c-12.8-12.8-12.8-34.133333 0-46.933333s34.133333-12.8 46.933334-1.066667z"/></svg>'
 
 const props = withDefaults(defineProps<FxIconSelectProps>(), {
   placeholder: '请选择图标',
