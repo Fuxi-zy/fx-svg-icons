@@ -42,4 +42,4 @@
 
 ---
 
-> 示例源码位于项目的 `demo-element-plus/`、`demo-naive/`、`demo-antdv-next/`、`demo-tdesign/`、`demo-custom/` 目录下。
+> 示例源码位于项目的 `demos/` 目录下。

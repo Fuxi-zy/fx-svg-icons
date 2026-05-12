@@ -1,9 +1,5 @@
 packages:
   - '.'
   - 'pickers/*'
-  - 'demo-element-plus'
-  - 'demo-naive'
-  - 'demo-antdv-next'
-  - 'demo-tdesign'
-  - 'demo-custom'
+  - 'demos/*'
   - 'fx-svg-icons-docs'

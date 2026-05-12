@@ -44,11 +44,11 @@ jobs:
 
       - run: |
           mkdir -p fx-svg-icons-docs/.vitepress/dist/demos
-          cp -r demo-element-plus/dist fx-svg-icons-docs/.vitepress/dist/demos/element-plus
-          cp -r demo-naive/dist fx-svg-icons-docs/.vitepress/dist/demos/naive
-          cp -r demo-antdv-next/dist fx-svg-icons-docs/.vitepress/dist/demos/antdv-next
-          cp -r demo-tdesign/dist fx-svg-icons-docs/.vitepress/dist/demos/tdesign
-          cp -r demo-custom/dist fx-svg-icons-docs/.vitepress/dist/demos/custom
+          cp -r demos/demo-element-plus/dist fx-svg-icons-docs/.vitepress/dist/demos/element-plus
+          cp -r demos/demo-naive/dist fx-svg-icons-docs/.vitepress/dist/demos/naive
+          cp -r demos/demo-antdv-next/dist fx-svg-icons-docs/.vitepress/dist/demos/antdv-next
+          cp -r demos/demo-tdesign/dist fx-svg-icons-docs/.vitepress/dist/demos/tdesign
+          cp -r demos/demo-custom/dist fx-svg-icons-docs/.vitepress/dist/demos/custom
 
       - uses: actions/upload-pages-artifact@v3
         with:

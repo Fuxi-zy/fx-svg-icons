@@ -42,4 +42,4 @@ No UI framework dependency, using the `useIconSelect` API to build a custom icon
 
 ---
 
-> Demo source code is located in the `demo-element-plus/`, `demo-naive/`, `demo-antdv-next/`, `demo-tdesign/`, `demo-custom/` directories of the project.
+> Demo source code is located in the `demos/` directory of the project.
