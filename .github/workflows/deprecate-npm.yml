@@ -27,7 +27,7 @@ jobs:
 
       - name: 废弃指定版本
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
         run: |
           PACKAGES=(
             "@fuxishi/svg-icon"
