@@ -1,0 +1,58 @@
+name: 单独发布包
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: '选择要发布的包'
+        required: true
+        type: choice
+        options:
+          - '@fuxishi/svg-icon'
+          - '@fuxishi/svg-icon-element-plus-picker'
+          - '@fuxishi/svg-icon-naive-picker'
+          - '@fuxishi/svg-icon-antdv-picker'
+          - '@fuxishi/svg-icon-tdesign-picker'
+          - '@fuxishi/svg-icon-picker'
+      tag:
+        description: '发布标签 (latest / alpha / beta)'
+        required: false
+        default: 'latest'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish-single:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: https://registry.npmjs.org/
+
+      - run: pnpm install
+
+      - name: 构建主包
+        run: pnpm build
+
+      - name: 构建目标 picker
+        if: inputs.package != '@fuxishi/svg-icon'
+        run: pnpm --filter ${{ inputs.package }} build
+
+      - name: 发布 ${{ inputs.package }}
+        run: |
+          if [ "${{ inputs.package }}" = "@fuxishi/svg-icon" ]; then
+            npm publish --access public --tag ${{ inputs.tag }}
+          else
+            PKG_DIR=$(node -e "const m={'@fuxishi/svg-icon-element-plus-picker':'pickers/element-plus','@fuxishi/svg-icon-naive-picker':'pickers/naive','@fuxishi/svg-icon-antdv-picker':'pickers/antdv','@fuxishi/svg-icon-tdesign-picker':'pickers/tdesign','@fuxishi/svg-icon-picker':'pickers/vanilla'};console.log(m['${{ inputs.package }}'])")
+            cd "$PKG_DIR" && npm publish --access public --tag ${{ inputs.tag }}
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
