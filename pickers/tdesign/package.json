@@ -1,6 +1,6 @@
 {
   "name": "@fuxishi/svg-icon-tdesign-picker",
-  "version": "1.0.7-alpha.1",
+  "version": "1.0.7-alpha.3",
   "description": "FxIconSelect TDesign 预设 for @fuxishi/svg-icon",
   "type": "module",
   "main": "./dist/index.cjs",

@@ -54,20 +54,20 @@ jobs:
       - name: 发布主包
         run: npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
       - name: 发布 Element Plus Picker
         run: cd pickers/element-plus && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
       - name: 发布 Naive UI Picker
         run: cd pickers/naive && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
       - name: 发布 AntDv Picker
         run: cd pickers/antdv && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
       - name: 发布 TDesign Picker
         run: cd pickers/tdesign && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI_SVG_ICON }}
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
