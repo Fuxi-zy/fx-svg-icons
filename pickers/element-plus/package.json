@@ -18,7 +18,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build && vue-tsc -p tsconfig.build.json"
+    "build": "vite build && vue-tsc -p tsconfig.build.json",
+    "ncu": "ncu -u && pnpm install"
   },
   "peerDependencies": {
     "@fuxishi/svg-icon": ">=1.0.7",
@@ -28,10 +29,10 @@
   "devDependencies": {
     "@fuxishi/svg-icon": "workspace:*",
     "@vitejs/plugin-vue": "^6.0.6",
-    "element-plus": "^2.13.7",
+    "element-plus": "^2.14.0",
     "typescript": "~6.0.3",
-    "vite": "^8.0.10",
-    "vue": "^3.5.33",
-    "vue-tsc": "^3.2.7"
+    "vite": "^8.0.12",
+    "vue": "^3.5.34",
+    "vue-tsc": "^3.2.8"
   }
 }

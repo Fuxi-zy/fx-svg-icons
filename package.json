@@ -30,13 +30,14 @@
     "build": "vite build && vue-tsc -p tsconfig.build.json",
     "typecheck": "vue-tsc --noEmit",
     "ncu": "ncu -u && pnpm install",
+    "n": "ncu -u && pnpm -r exec ncu -u && pnpm install",
     "login": "npm login --registry=https://registry.npmjs.org/",
     "pub": "npm publish --access public --registry=https://registry.npmjs.org/",
     "pub-tag": "npm publish --access public --tag alpha --registry=https://registry.npmjs.org/",
     "deprecate": "node -e \"const v=process.argv[1],m=process.argv[2]||'';require('child_process').execSync('npm deprecate @fuxishi/svg-icon@'+v+' \\\"'+m+'\\\" --registry=https://registry.npmjs.org/',{stdio:'inherit'})\""
   },
   "dependencies": {
-    "@iconify/vue": "^5.0.0"
+    "@iconify/vue": "^5.0.1"
   },
   "peerDependencies": {
     "vue": "^3.5.33"
@@ -58,9 +59,9 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.6",
     "typescript": "~6.0.3",
-    "vite": "^8.0.10",
-    "vue": "^3.5.33",
-    "vue-tsc": "^3.2.7"
+    "vite": "^8.0.12",
+    "vue": "^3.5.34",
+    "vue-tsc": "^3.2.8"
   },
   "keywords": [
     "vue3",
@@ -77,6 +78,6 @@
     "url": "https://github.com/Fuxi-zy/fx-svg-icons/issues"
   },
   "homepage": "https://fuxi-zy.github.io/fx-svg-icons/",
-  "packageManager": "pnpm@10.33.2",
+  "packageManager": "pnpm@11.1.0",
   "license": "MIT"
 }

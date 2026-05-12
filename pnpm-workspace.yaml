@@ -3,3 +3,5 @@ packages:
   - 'pickers/*'
   - 'demos/*'
   - 'fx-svg-icons-docs'
+allowBuilds:
+  esbuild: false
