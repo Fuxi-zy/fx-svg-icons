@@ -41,7 +41,13 @@ The following UI frameworks are optional. Installing them automatically enables 
 | `antdv-next` | AntDv Next preset |
 | `tdesign-vue-next` | TDesign preset |
 
-After installing a UI framework, `FxIconSelect` will automatically detect and load the corresponding preset component without manual configuration.
+You can also install the framework-free picker package:
+
+| Package | Purpose |
+|---------|---------|
+| `@fuxishi/svg-icon-vanilla-picker` | No UI framework preset, supports CSS variable theming |
+
+After installing a picker package, `FxIconSelect` will automatically detect and load the corresponding preset component without manual configuration.
 
 ## Icon Collection Packages
 

@@ -81,6 +81,10 @@ pnpm add @fuxishi/svg-icon-antdv-picker
 pnpm add @fuxishi/svg-icon-tdesign-picker
 ```
 
+```bash [Vanilla（无 UI 框架）]
+pnpm add @fuxishi/svg-icon-vanilla-picker
+```
+
 :::
 
 安装后 `setupIcons(app)` 会自动检测并注册 `FxIconSelect`，直接在模板中使用即可：

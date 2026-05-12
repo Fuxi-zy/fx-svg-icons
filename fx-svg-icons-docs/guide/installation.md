@@ -41,7 +41,13 @@ pnpm add vue
 | `antdv-next` | AntDv Next 预设 |
 | `tdesign-vue-next` | TDesign 预设 |
 
-安装对应的 UI 框架后，`FxIconSelect` 会自动检测并加载对应的预设组件，无需手动配置。
+也可安装无 UI 框架依赖的 picker 包：
+
+| 包名 | 用途 |
+|------|------|
+| `@fuxishi/svg-icon-vanilla-picker` | 无 UI 框架预设，支持 CSS 变量自定义主题 |
+
+安装对应的 picker 包后，`FxIconSelect` 会自动检测并加载对应的预设组件，无需手动配置。
 
 ## 图标集包
 

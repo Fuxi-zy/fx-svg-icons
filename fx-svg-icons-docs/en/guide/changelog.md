@@ -2,6 +2,12 @@
 
 All version changes. Click the version number to view the GitHub Release details.
 
+## [v1.0.7](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.7)
+
+- Added `@fuxishi/svg-icon-vanilla-picker` icon selector preset (no UI framework dependency, CSS variable theming support)
+- Picker packages split into independent packages, Vite plugin auto-detects installed picker packages and registers components
+- Migrated demo directory to demos folder
+
 ## [v1.0.6](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.6)
 
 - Fixed local SVG icons not responding to the `color` prop

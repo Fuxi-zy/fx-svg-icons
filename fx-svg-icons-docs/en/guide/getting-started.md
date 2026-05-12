@@ -81,6 +81,10 @@ pnpm add @fuxishi/svg-icon-antdv-picker
 pnpm add @fuxishi/svg-icon-tdesign-picker
 ```
 
+```bash [Vanilla (No UI Framework)]
+pnpm add @fuxishi/svg-icon-vanilla-picker
+```
+
 :::
 
 After installation, `setupIcons(app)` will automatically detect and register `FxIconSelect`. Use directly in templates:

@@ -2,6 +2,12 @@
 
 所有版本变更记录，点击版本号可查看 GitHub Release 详情。
 
+## [v1.0.7](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.7)
+
+- 新增 `@fuxishi/svg-icon-vanilla-picker` 图标选择器预设（无 UI 框架依赖，支持 CSS 变量自定义主题）
+- picker 拆分为独立包，Vite 插件自动检测已安装的 picker 包并注册组件
+- 将 demo 目录统一迁移至 demos 文件夹
+
 ## [v1.0.6](https://github.com/Fuxi-zy/fx-svg-icons/releases/tag/v1.0.6)
 
 - 修复本地 SVG 图标无法通过 `color` 属性修改颜色的问题

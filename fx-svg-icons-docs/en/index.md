@@ -21,7 +21,7 @@ features:
   - title: Local SVG
     details: Auto-load local SVG files via import.meta.glob, supports multi-level directories
   - title: Multi-UI Presets
-    details: Split into independent picker packages for Element Plus, Naive UI, AntDv Next, TDesign
+    details: Split into independent picker packages for Element Plus, Naive UI, AntDv Next, TDesign and framework-free preset
   - title: Vite Plugin
     details: Auto-generate TypeScript type declarations precise to each icon name, IDE smart hints
   - title: Icon Selector
