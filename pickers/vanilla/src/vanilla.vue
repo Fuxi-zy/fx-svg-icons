@@ -355,7 +355,11 @@ const popupStyle = computed(() => {
 .fx-icon-select-search-icon :deep(svg) {
   width: 14px;
   height: 14px;
-  fill: #c0c4cc;
+  fill: #c0c4cc !important;
+}
+
+.fx-icon-select-search-icon :deep(svg path) {
+  fill: #c0c4cc !important;
 }
 
 .fx-icon-select-search {
