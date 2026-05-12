@@ -29,7 +29,7 @@ pnpm add @fuxishi/svg-icon-tdesign-picker
 ```
 
 ```bash [Vanilla (No UI Framework)]
-pnpm add @fuxishi/svg-icon-picker
+pnpm add @fuxishi/svg-icon-vanilla-picker
 ```
 
 :::
@@ -40,7 +40,7 @@ pnpm add @fuxishi/svg-icon-picker
 | Naive UI | `@fuxishi/svg-icon-naive-picker` | `naive-ui` |
 | AntDv Next | `@fuxishi/svg-icon-antdv-picker` | `antdv-next` |
 | TDesign | `@fuxishi/svg-icon-tdesign-picker` | `tdesign-vue-next` |
-| No UI Framework | `@fuxishi/svg-icon-picker` | None |
+| No UI Framework | `@fuxishi/svg-icon-vanilla-picker` | None |
 
 ### Usage
 
@@ -158,7 +158,7 @@ See [useIconSelect](/en/composables/use-icon-select) for details.
 
 ## CSS Variables
 
-`@fuxishi/svg-icon-picker` (Vanilla version) supports theme customization via CSS variables. Override them at the component's parent level:
+`@fuxishi/svg-icon-vanilla-picker` (Vanilla version) supports theme customization via CSS variables. Override them at the component's parent level:
 
 ```css
 /* Global override */

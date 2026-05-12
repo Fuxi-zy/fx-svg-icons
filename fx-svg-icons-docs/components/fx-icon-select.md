@@ -29,7 +29,7 @@ pnpm add @fuxishi/svg-icon-tdesign-picker
 ```
 
 ```bash [Vanilla（无 UI 框架）]
-pnpm add @fuxishi/svg-icon-picker
+pnpm add @fuxishi/svg-icon-vanilla-picker
 ```
 
 :::
@@ -40,7 +40,7 @@ pnpm add @fuxishi/svg-icon-picker
 | Naive UI | `@fuxishi/svg-icon-naive-picker` | `naive-ui` |
 | AntDv Next | `@fuxishi/svg-icon-antdv-picker` | `antdv-next` |
 | TDesign | `@fuxishi/svg-icon-tdesign-picker` | `tdesign-vue-next` |
-| 无 UI 框架 | `@fuxishi/svg-icon-picker` | 无 |
+| 无 UI 框架 | `@fuxishi/svg-icon-vanilla-picker` | 无 |
 
 ### 使用
 
@@ -158,7 +158,7 @@ const iconSelect = useIconSelect({
 
 ## CSS 变量
 
-`@fuxishi/svg-icon-picker`（Vanilla 版本）支持通过 CSS 变量自定义主题。只需在组件外层覆盖对应的 CSS 变量即可：
+`@fuxishi/svg-icon-vanilla-picker`（Vanilla 版本）支持通过 CSS 变量自定义主题。只需在组件外层覆盖对应的 CSS 变量即可：
 
 ```css
 /* 全局覆盖 */

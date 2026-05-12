@@ -2,7 +2,7 @@
 import { ref } from "vue"
 import type { IconString } from "@/types/fx-icon-types"
 import { FxIcon } from "@fuxishi/svg-icon"
-import { FxIconSelect } from "@fuxishi/svg-icon-picker"
+import { FxIconSelect } from "@fuxishi/svg-icon-vanilla-picker"
 import { dependencies } from "virtual:demo-deps"
 
 const selectedIcon = ref<IconString | "">("")

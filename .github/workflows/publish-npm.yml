@@ -36,7 +36,7 @@ jobs:
       - run: pnpm --filter @fuxishi/svg-icon-naive-picker build
       - run: pnpm --filter @fuxishi/svg-icon-antdv-picker build
       - run: pnpm --filter @fuxishi/svg-icon-tdesign-picker build
-      - run: pnpm --filter @fuxishi/svg-icon-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-vanilla-picker build
 
       - name: 判断发布标签
         id: release-tag

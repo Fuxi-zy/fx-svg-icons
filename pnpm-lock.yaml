@@ -233,7 +233,7 @@ importers:
       '@fuxishi/svg-icon':
         specifier: workspace:*
         version: link:../..
-      '@fuxishi/svg-icon-picker':
+      '@fuxishi/svg-icon-vanilla-picker':
         specifier: workspace:*
         version: link:../../pickers/vanilla
       '@iconify-json/ant-design':

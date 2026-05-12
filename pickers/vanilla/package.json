@@ -1,5 +1,5 @@
 {
-  "name": "@fuxishi/svg-icon-picker",
+  "name": "@fuxishi/svg-icon-vanilla-picker",
   "version": "1.0.7",
   "description": "FxIconSelect 无框架依赖预设 for @fuxishi/svg-icon",
   "type": "module",
