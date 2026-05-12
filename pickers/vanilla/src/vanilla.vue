@@ -177,7 +177,9 @@ const popupStyle = computed(() => {
   const spaceBelow = window.innerHeight - rect.bottom
   const spaceAbove = rect.top
   const estimatedHeight = iconSelect.contentHeight.value + 40
-  const style: Record<string, string> = {}
+  const style: Record<string, string> = {
+    height: `${iconSelect.contentHeight.value}px`
+  }
 
   if (spaceBelow < estimatedHeight && spaceAbove > spaceBelow) {
     style.bottom = 'calc(100% + 8px)'
