@@ -12,7 +12,7 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./dist/style.css": "./dist/svg-icon-picker.css"
+    "./dist/style.css": "./dist/svg-icon-vanilla-picker.css"
   },
   "files": [
     "dist"
