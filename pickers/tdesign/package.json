@@ -1,6 +1,6 @@
 {
   "name": "@fuxishi/svg-icon-tdesign-picker",
-  "version": "1.0.7-alpha.3",
+  "version": "1.0.7-alpha.4",
   "description": "FxIconSelect TDesign 预设 for @fuxishi/svg-icon",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -21,7 +21,7 @@
     "build": "vite build && vue-tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
-    "@fuxishi/svg-icon": "^1.0.6",
+    "@fuxishi/svg-icon": "^1.0.7-alpha.4",
     "tdesign-vue-next": "^1.19.0",
     "vue": "^3.5.0"
   },
