@@ -1,6 +1,6 @@
 {
   "name": "@fuxishi/svg-icon-antdv-picker",
-  "version": "1.0.7-alpha.4",
+  "version": "1.0.7",
   "description": "FxIconSelect AntDv Next 预设 for @fuxishi/svg-icon",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -21,7 +21,7 @@
     "build": "vite build && vue-tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
-    "@fuxishi/svg-icon": "^1.0.7-alpha.4",
+    "@fuxishi/svg-icon": ">=1.0.7",
     "antdv-next": "^1.2.0",
     "vue": "^3.5.0"
   },
