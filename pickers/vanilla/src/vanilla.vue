@@ -57,6 +57,7 @@
             <span class="icon-name">{{ icon }}</span>
           </div>
           <div v-if="iconSelect.getFilteredIcons(iconSelect.activeTab.value).length === 0" class="fx-icon-select-empty">
+            <span class="fx-icon-select-empty-icon" v-html="emptySvgRaw"></span>
             <span class="fx-icon-select-empty-text">未找到图标</span>
           </div>
         </div>
@@ -116,6 +117,7 @@ import searchSvgRaw from './assets/search.svg?raw'
 import arrowDownSvgRaw from './assets/arrow-down.svg?raw'
 import arrowLeftSvgRaw from './assets/arrow-left.svg?raw'
 import arrowRightSvgRaw from './assets/arrow-right.svg?raw'
+import emptySvgRaw from './assets/empty.svg?raw'
 import { FxIcon, useIconSelect, type FxIconSelectProps } from '@fuxishi/svg-icon'
 
 const props = withDefaults(defineProps<FxIconSelectProps>(), {
@@ -481,6 +483,17 @@ const popupStyle = computed(() => {
   justify-content: center;
   padding: 40px 0;
   width: 100%;
+}
+
+.fx-icon-select-empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fx-icon-select-empty-icon :deep(svg) {
+  width: 96px;
+  height: 96px;
 }
 
 .fx-icon-select-empty-text {
