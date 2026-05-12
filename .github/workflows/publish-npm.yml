@@ -36,6 +36,7 @@ jobs:
       - run: pnpm --filter @fuxishi/svg-icon-naive-picker build
       - run: pnpm --filter @fuxishi/svg-icon-antdv-picker build
       - run: pnpm --filter @fuxishi/svg-icon-tdesign-picker build
+      - run: pnpm --filter @fuxishi/svg-icon-picker build
 
       - name: 判断发布标签
         id: release-tag
@@ -69,5 +70,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
       - name: 发布 TDesign Picker
         run: cd pickers/tdesign && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}
+      - name: 发布 Vanilla Picker
+        run: cd pickers/vanilla && npm publish --access public --tag ${{ steps.release-tag.outputs.tag }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.FUXISHI }}

@@ -1,0 +1,35 @@
+{
+  "name": "@fuxishi/svg-icon-picker",
+  "version": "1.0.7",
+  "description": "FxIconSelect 无框架依赖预设 for @fuxishi/svg-icon",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/style.css": "./dist/svg-icon-picker.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build && vue-tsc -p tsconfig.build.json"
+  },
+  "peerDependencies": {
+    "@fuxishi/svg-icon": ">=1.0.7",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@fuxishi/svg-icon": "workspace:*",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "typescript": "~6.0.3",
+    "vite": "^8.0.10",
+    "vue": "^3.5.33",
+    "vue-tsc": "^3.2.7"
+  }
+}
