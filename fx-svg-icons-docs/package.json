@@ -8,7 +8,7 @@
     "preview": "vitepress preview"
   },
   "devDependencies": {
-    "@fuxishi/vitepress-theme": "2.0.0-alpha.6",
+    "@fuxishi/vitepress-theme": "2.0.0-alpha.8",
     "vitepress": "2.0.0-alpha.17"
   }
 }

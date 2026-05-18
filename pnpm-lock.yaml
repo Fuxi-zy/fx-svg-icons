@@ -268,8 +268,8 @@ importers:
   fx-svg-icons-docs:
     devDependencies:
       '@fuxishi/vitepress-theme':
-        specifier: 2.0.0-alpha.6
-        version: 2.0.0-alpha.6(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))
+        specifier: 2.0.0-alpha.8
+        version: 2.0.0-alpha.8(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))
       vitepress:
         specifier: 2.0.0-alpha.17
         version: 2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3)
@@ -649,8 +649,8 @@ packages:
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
 
-  '@fuxishi/vitepress-theme@2.0.0-alpha.6':
-    resolution: {integrity: sha512-X/a6MKumiksDktXMx7/EfaoveoYA0e456plIT0O0rW/VLN1T+aJ1ZETZg4PGSa9Arw+L/9yanJeywmO8Ubmutg==}
+  '@fuxishi/vitepress-theme@2.0.0-alpha.8':
+    resolution: {integrity: sha512-VvJDuHsn6spi7iycAgY3n2j/iMoFXerMWwbrkRblGfctcYCfgIPPAF7ZsCT3EQBMIMaclI9biHTpAbtB+otYHg==}
     peerDependencies:
       vitepress: '>=2.0.0-alpha.17'
 
@@ -2270,7 +2270,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@fuxishi/vitepress-theme@2.0.0-alpha.6(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))':
+  '@fuxishi/vitepress-theme@2.0.0-alpha.8(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))':
     dependencies:
       canvas-confetti: 1.9.4
       element-plus: 2.14.0(vue@3.5.34(typescript@6.0.3))
