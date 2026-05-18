@@ -268,8 +268,8 @@ importers:
   fx-svg-icons-docs:
     devDependencies:
       '@fuxishi/vitepress-theme':
-        specifier: 2.0.0-alpha.5
-        version: 2.0.0-alpha.5(typescript@6.0.3)(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))
+        specifier: 2.0.0-alpha.6
+        version: 2.0.0-alpha.6(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))
       vitepress:
         specifier: 2.0.0-alpha.17
         version: 2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3)
@@ -649,8 +649,8 @@ packages:
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
 
-  '@fuxishi/vitepress-theme@2.0.0-alpha.5':
-    resolution: {integrity: sha512-n/Saaw9WK6cxrcRDClzoFiz9zovK7Nm8D9ElOBUckDxJsKURjmlTO3t4yO/HvF4+GhHfJYWPc/kzY7db6pHE6A==}
+  '@fuxishi/vitepress-theme@2.0.0-alpha.6':
+    resolution: {integrity: sha512-X/a6MKumiksDktXMx7/EfaoveoYA0e456plIT0O0rW/VLN1T+aJ1ZETZg4PGSa9Arw+L/9yanJeywmO8Ubmutg==}
     peerDependencies:
       vitepress: '>=2.0.0-alpha.17'
 
@@ -1050,9 +1050,6 @@ packages:
   '@types/validator@13.15.10':
     resolution: {integrity: sha512-T8L6i7wCuyoK8A/ZeLYt1+q0ty3Zb9+qbSSvrIVitzT3YjZqkTZ40IbRsPanlB4h1QB3JVL1SYCdR6ngtFYcuA==}
 
-  '@types/web-bluetooth@0.0.20':
-    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
-
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
 
@@ -1377,9 +1374,6 @@ packages:
       vue:
         optional: true
 
-  '@vueuse/core@12.0.0':
-    resolution: {integrity: sha512-C12RukhXiJCbx4MGhjmd/gH52TjJsc3G0E0kQj/kb19H3Nt6n1CA4DRWuTdWWcaFRdlTe0npWDS942mvacvNBw==}
-
   '@vueuse/core@14.3.0':
     resolution: {integrity: sha512-aHfz47g0ZhMtTVHmIzMVpJy8ePhhOy68GY5bv110+5DVtZ+W7BsOx+m61UNQqfrWyPztIHIanWa3E2tib3NFIw==}
     peerDependencies:
@@ -1427,14 +1421,8 @@ packages:
       universal-cookie:
         optional: true
 
-  '@vueuse/metadata@12.0.0':
-    resolution: {integrity: sha512-Yzimd1D3sjxTDOlF05HekU5aSGdKjxhuhRFHA7gDWLn57PRbBIh+SF5NmjhJ0WRgF3my7T8LBucyxdFJjIfRJQ==}
-
   '@vueuse/metadata@14.3.0':
     resolution: {integrity: sha512-BwxmbAzwAVF50+MW57GXOUEV61nFBGnlBvrTqj49PqWJu3uw7hdu72ztXeZ33RdZtDY6kO+bfCAE1PCn88Tktw==}
-
-  '@vueuse/shared@12.0.0':
-    resolution: {integrity: sha512-3i6qtcq2PIio5i/vVYidkkcgvmTjCqrf26u+Fd4LhnbBmIT6FN8y6q/GJERp8lfcB9zVEfjdV0Br0443qZuJpw==}
 
   '@vueuse/shared@14.3.0':
     resolution: {integrity: sha512-bZpge9eSXwa4ToSiqJ7j6KRwhAsneMFoSz3LMWKQDkqimm3D/tbFlrklrs/IOqC8tEcYmXQZJ6N0UrjhBirVCg==}
@@ -1520,11 +1508,6 @@ packages:
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
-
-  element-plus@2.13.7:
-    resolution: {integrity: sha512-XdHATFZOyzVFL1DaHQ90IOJQSg9UnSAV+bhDW+YB5UoZ0Hxs50mwqjqfwXkuwpSag+VXXizVcErBR6Movo5daw==}
-    peerDependencies:
-      vue: ^3.3.0
 
   element-plus@2.14.0:
     resolution: {integrity: sha512-POgH+TtoreaEKWqYYAVQyE6i8rQMEFqAEublyF29dBA5yASWPLKY6EzfeqBTr2Uv26mPss4vSrMrNPyaK7LX5w==}
@@ -2075,9 +2058,6 @@ packages:
   vscode-uri@3.1.0:
     resolution: {integrity: sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==}
 
-  vue-component-type-helpers@3.2.7:
-    resolution: {integrity: sha512-+gPp5YGmhfsj1IN+xUo7y0fb4clfnOiiUA39y07yW1VzCRjzVgwLbtmdWlghh7mXrPsEaYc7rrIir/HT6C8vYQ==}
-
   vue-component-type-helpers@3.2.8:
     resolution: {integrity: sha512-9689efAXhN/EV86plgkL/XFiJSXhGtWPG6JDboZ+QnjlUWUUQrQ0ILKQtw4iQsuwIwu5k6Aw+JnehDe7161e7A==}
 
@@ -2290,15 +2270,14 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@fuxishi/vitepress-theme@2.0.0-alpha.5(typescript@6.0.3)(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))':
+  '@fuxishi/vitepress-theme@2.0.0-alpha.6(vitepress@2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3))(vue@3.5.34(typescript@6.0.3))':
     dependencies:
       canvas-confetti: 1.9.4
-      element-plus: 2.13.7(typescript@6.0.3)(vue@3.5.34(typescript@6.0.3))
+      element-plus: 2.14.0(vue@3.5.34(typescript@6.0.3))
       node-vibrant: 4.0.4
       vitepress: 2.0.0-alpha.17(@types/node@25.7.0)(async-validator@4.2.5)(lightningcss@1.32.0)(postcss@8.5.14)(sortablejs@1.15.7)(typescript@6.0.3)
     transitivePeerDependencies:
       - encoding
-      - typescript
       - vue
 
   '@iconify-json/ant-design@1.2.5':
@@ -2620,8 +2599,6 @@ snapshots:
   '@types/unist@3.0.3': {}
 
   '@types/validator@13.15.10': {}
-
-  '@types/web-bluetooth@0.0.20': {}
 
   '@types/web-bluetooth@0.0.21': {}
 
@@ -3033,15 +3010,6 @@ snapshots:
       typescript: 6.0.3
       vue: 3.5.34(typescript@6.0.3)
 
-  '@vueuse/core@12.0.0(typescript@6.0.3)':
-    dependencies:
-      '@types/web-bluetooth': 0.0.20
-      '@vueuse/metadata': 12.0.0
-      '@vueuse/shared': 12.0.0(typescript@6.0.3)
-      vue: 3.5.34(typescript@6.0.3)
-    transitivePeerDependencies:
-      - typescript
-
   '@vueuse/core@14.3.0(vue@3.5.34(typescript@6.0.3))':
     dependencies:
       '@types/web-bluetooth': 0.0.21
@@ -3059,15 +3027,7 @@ snapshots:
       focus-trap: 8.1.0
       sortablejs: 1.15.7
 
-  '@vueuse/metadata@12.0.0': {}
-
   '@vueuse/metadata@14.3.0': {}
-
-  '@vueuse/shared@12.0.0(typescript@6.0.3)':
-    dependencies:
-      vue: 3.5.34(typescript@6.0.3)
-    transitivePeerDependencies:
-      - typescript
 
   '@vueuse/shared@14.3.0(vue@3.5.34(typescript@6.0.3))':
     dependencies:
@@ -3190,27 +3150,6 @@ snapshots:
   devlop@1.1.0:
     dependencies:
       dequal: 2.0.3
-
-  element-plus@2.13.7(typescript@6.0.3)(vue@3.5.34(typescript@6.0.3)):
-    dependencies:
-      '@ctrl/tinycolor': 4.2.0
-      '@element-plus/icons-vue': 2.3.2(vue@3.5.34(typescript@6.0.3))
-      '@floating-ui/dom': 1.7.6
-      '@popperjs/core': '@sxzz/popperjs-es@2.11.8'
-      '@types/lodash': 4.17.24
-      '@types/lodash-es': 4.17.12
-      '@vueuse/core': 12.0.0(typescript@6.0.3)
-      async-validator: 4.2.5
-      dayjs: 1.11.20
-      lodash: 4.18.1
-      lodash-es: 4.18.1
-      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.18.1)(lodash@4.18.1)
-      memoize-one: 6.0.0
-      normalize-wheel-es: 1.2.0
-      vue: 3.5.34(typescript@6.0.3)
-      vue-component-type-helpers: 3.2.7
-    transitivePeerDependencies:
-      - typescript
 
   element-plus@2.14.0(vue@3.5.34(typescript@6.0.3)):
     dependencies:
@@ -3815,8 +3754,6 @@ snapshots:
       vue: 3.5.34(typescript@6.0.3)
 
   vscode-uri@3.1.0: {}
-
-  vue-component-type-helpers@3.2.7: {}
 
   vue-component-type-helpers@3.2.8: {}
 
