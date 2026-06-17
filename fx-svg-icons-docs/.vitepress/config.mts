@@ -1,10 +1,10 @@
-import { defineConfig } from "vitepress"
-import type { DefaultTheme } from "vitepress"
-import fxConfig from "@fuxishi/vitepress-theme/config"
-import type { FxThemeCustomConfig } from "@fuxishi/vitepress-theme/config"
-import icon from "../public/svg-ts/svg"
+import { defineConfig } from "vitepress";
+import type { DefaultTheme } from "vitepress";
+import fxConfig from "@fuxishi/vitepress-theme/config";
+import type { FxThemeCustomConfig } from "@fuxishi/vitepress-theme/config";
+import icon from "../public/svg-ts/svg";
 
-type ThemeConfig = DefaultTheme.Config & FxThemeCustomConfig
+type ThemeConfig = DefaultTheme.Config & FxThemeCustomConfig;
 
 export default defineConfig<ThemeConfig>({
   extends: fxConfig,
@@ -167,16 +167,13 @@ export default defineConfig<ThemeConfig>({
       autoplay: false,
       loop: true,
       list: [
-        { name: "海阔天空", src: "/music/BEYOND - 海阔天空.mp3" },
-        {
-          name: "梦中的婚礼",
-          src: "/music/Richard Clayderman - Matrimonio De Amor (梦中的婚礼).mp3",
-        },
-        { name: "岁月神偷", src: "/music/suiyinjiliang.mp3" },
+        // { name: "示例", src: "/music/example.mp3" },
+        { name: "寂静的天际线", src: "/music/Silent_Skyline.mp3" },
+        { name: "春之恋", src: "/music/Spring_Love.mp3" },
       ],
     },
     search: {
       provider: "local",
     },
   },
-})
+});
